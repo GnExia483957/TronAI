@@ -1,0 +1,86 @@
+/* Add your custom CSS styles here */
+body{
+  background-repeat: no-repeat;
+  background-image: linear-gradient(#8E0000, black);
+}
+
+.navbar-brand {
+  font-weight: bold;
+}
+
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  min-height: 100vh;
+  
+}
+
+
+
+.news-container{
+  width: 50vw;
+  align-self: center;
+  border-radius: 1.1rem;
+  background-color: #1A1A1A;
+  padding: 10px;
+  font-size: 15px;
+}
+
+.time{
+  color:#FF0000
+}
+
+.headline{
+  color: pink;
+}
+
+.news{
+  color:aqua;
+}
+
+.news-link{
+  color: white;
+  text-decoration: none;
+}
+
+.search-container {
+  align-items: center;
+  border-radius: 1.1rem;
+  background-color: #1A1A1A;
+  padding: 10px;
+}
+
+.inner-search {
+  background-color: #0F0F0F;
+  border-radius: 2rem;
+  display: flex;
+  align-items: center;
+  padding: 10px;
+}
+
+.inner-search input {
+  border: none;
+  flex-grow: 1;
+  font-size: 16px;
+  padding: 5px 100px;
+  background-color: #0F0F0F;
+}
+
+.inner-search ::placeholder{
+  color: white;
+}
+
+input[type=text] {
+  color: white;
+}
+
+.inner-search button {
+  background-color: #FF0000;
+  border: none;
+  border-radius: 20px;
+  color: white;
+  cursor: pointer;
+  font-size: 16px;
+  padding: 5px 20px;
+}
