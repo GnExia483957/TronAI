@@ -3,10 +3,31 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded!');
   });
 
-  fetch("data/data.json")
-  .then(response => response.json())
-  .then(data => showInfo(data));
+  var weekly_quakes_endpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
+
+  $(document).ready(function() {
+    $.ajax({
+      method:'GET',
+      url:weekly_quakes_endpoint,
+      success: onSuccess,
+      error: onError,
+    });
+  });
   
-  function showInfo(data) {
-  console.table(data.countries);
+  
+  function onSuccess(json){
+  
+    var currentTime = new Date();
+    var coordinates = [];
+  
+    for(i = 0; i < json.features.length; i++){
+  
+      var quakeTime = new Date (json.features[i].properties.time);
+      var timeElapsed = currentTime - quakeTime;
+  
+      timeElapsed = Math.round(10*timeElapsed/1000/60/60)/10;
+      $('#info').append(`<p>M: ${json.features[i].properties.mag} - ${json.features[i].properties.place} / ${timeElapsed} hours ago</p>`);
+      coordinates.push([json.features[i].geometry.coordinates[0], json.features[i].geometry.coordinates[1]]);
+      initMap(coordinates);
+    }
   }
