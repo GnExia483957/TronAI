@@ -2,10 +2,19 @@
 body{
   background-repeat: no-repeat;
   background-image: linear-gradient(#8E0000, black);
-  overflow: hidden;
+  /* overflow: hidden; */
+  height: 100vh;
 }
 
-#info{
+h1{
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  color: white;
+  align-items: center;
+}
+
+#news{
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -19,17 +28,18 @@ body{
   display: flex;
   flex-direction: column;
   /* justify-content: space-around; */
-  min-height: 100vh;
 }
 
 .news-container{
-  max-width: 60vw;
-  align-self: center;
+  max-height: 10vh;
+  min-width: 50vw;
+  justify-content: space-between;
   border-radius: 1.1rem;
   background-color: #1A1A1A;
-  padding: 10px;
-  font-size: 15px;
+  padding: 30px;
+  font-size: 1.3rem;
   margin: 10px 0 10px 0;
+
 }
 
 .time{
@@ -111,10 +121,10 @@ input[type=text] {
   padding: 5px 20px;
 }
 
-.animation-container{
-  display: flex;
-  flex-direction: column;
-  align-items: start;
+#animation-container{
+  display: none;
+  background: lightblue;
+  padding: 1px;
 }
 
 #animation{
@@ -122,12 +132,11 @@ input[type=text] {
   animation-play-state: play;
   width: 30px;
   height: 20px;
-  background: white;
   position: relative;
   animation: myfirst 1.5s infinite;
 }
 
 @keyframes myfirst {
-  0%   {background: white; left: 0px; top: 0px;}
+  0%   {background: blue; left: 0px; top: 0px;}
   100%  {background: blue; left: 100%; top: 0px;}
 }

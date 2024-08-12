@@ -3,61 +3,75 @@
     console.log('Page loaded!');
   });
 
-
+////////////////////////////////////////////////////////////////////////////////////
 //Tron News Populate
-  var weekly_quakes_endpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
+let APIendpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
 
-  $(document).ready(function() {
+document.addEventListener('DOMContentLoaded', getAPI)
+
+function getAPI() {
     $.ajax({
       method:'GET',
-      url:weekly_quakes_endpoint,
+      url:APIendpoint,
       success: onSuccess,
       error: onError,
     });
-  });
-
+  };
 
   function onSuccess(json){
-    console.log(json);
-    var currentTime = new Date();
-    var coordinates = [];
+    let currentTime = new Date();
   
     for(i = 0; i < 3; i++){
-  
-      var quakeTime = new Date (json.features[i].properties.time);
-      var timeElapsed = currentTime - quakeTime;
-  
+      let quakeTime = new Date (json.features[i].properties.time);
+      
+      let timeElapsed = currentTime - quakeTime;
       timeElapsed = Math.round(10*timeElapsed/1000/60/60)/10;
-      $('#info').append(`<p>M: ${json.features[i].properties.mag} - ${json.features[i].properties.place} / ${timeElapsed} 小時前</p>`);
-      coordinates.push([json.features[i].geometry.coordinates[0], json.features[i].geometry.coordinates[1]]);
+
+      let place = json.features[i].properties.place;
+      
+      let url = json.features[i].properties.url;
+      
+      let title = json.features[i].properties.title;
+
+      $('#news').append(
+        `
+        <div class="container">
+          <div class="news-container">
+            <div class="time">${timeElapsed} 小時前</div>
+            <div class="headline">${place}</div>
+            <div class="news">${title}</div>
+            <div id="news-link"><a href=${url} target="blank">TheNewsCrypto</a></div>
+          </div>
+        </div>
+        `);
     }
   }
 
   function onError (xhr, status, errorThrown){
     console.log(xhr, status, errorThrown)
   }
-
+////////////////////////////////////////////////////////////////////////////////////
 //See More Button
-  var buttonArray = ['apple', 'banana', 'cherry', 'date', 'elderberry']
+  let buttonArray = ['apple', 'banana', 'cherry', 'date', 'elderberry']
   
   const element = document.getElementById("seeMoreBtn");
   element.addEventListener("click", myFunction);
 
   function myFunction() {
     console.log(buttonArray[Math.floor(Math.random() * buttonArray.length)]);
-    // document.getElementById("demo").innerHTML = "Hello World";
   }
+////////////////////////////////////////////////////////////////////////////////////
 
-
+//AI Button
   const x = document.getElementById("toggleBtn");
-  x.addEventListener("click", toggle);
+  x.addEventListener("click", toggleAnimation);
 
-  function toggle() {
-    var x = document.getElementById("animation");
+  function toggleAnimation() {
+    let x = document.getElementById("animation-container");
     if (x.style.display === "none") {
       x.style.display = "block";
     } else {
       x.style.display = "none";
     }
   }
-  
+  ////////////////////////////////////////////////////////////////////////////////////
