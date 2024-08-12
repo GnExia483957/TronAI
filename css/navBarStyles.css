@@ -3,25 +3,20 @@ nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
-    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-  z-index: 1;
 }
 nav .logo {
   display: flex;
   align-items: center;
 }
+
 nav .logo img {
-  height: 25px;
+  height: 50px;
   width: auto;
-  margin-right: 10px;
 }
+
 nav .logo h1 {
-  font-size: 1.1rem;
-  background: linear-gradient(to right, #b927fc 0%, #2c64fc 100%);
-  -webkit-background-clip: text;
-  background-clip: text;
-  -webkit-text-fill-color: transparent;
+  font-size: 3rem;
+  color: white;
 }
 
 nav ul {
@@ -33,7 +28,7 @@ nav ul li {
 }
 nav ul li a {
   text-decoration: none;
-  color: #000;
+  color: white;;
   font-size: 95%;
   font-weight: 400;
   padding: 4px 8px;

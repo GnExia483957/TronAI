@@ -4,6 +4,7 @@ body{
   background-image: linear-gradient(#8E0000, black 30%);
   /* overflow: hidden; */
   height: 100vh;
+  width: 100%;
 }
 
 h1{
@@ -43,19 +44,26 @@ h1{
 }
 
 .time{
+  font-size: 1.8rem;
   color:#FF0000
 }
 
 .headline{
+  padding-top: 5px;
+  padding-left: 15px;
   color: pink;
 }
 
 .news{
+  padding-top: 5px;
+  padding-bottom: 5px;
+  padding-left: 15px;
   color:aqua;
 }
 
 a{
   color: white;
+  padding-left: 15px;
   text-decoration: none;
 }
 
