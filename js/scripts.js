@@ -13,14 +13,14 @@ document.addEventListener('DOMContentLoaded', function() {
       error: onError,
     });
   });
-  
-  
+
+
   function onSuccess(json){
-  
+
     var currentTime = new Date();
     var coordinates = [];
   
-    for(i = 0; i < json.features.length; i++){
+    for(i = 0; i < 3; i++){
   
       var quakeTime = new Date (json.features[i].properties.time);
       var timeElapsed = currentTime - quakeTime;
@@ -28,6 +28,10 @@ document.addEventListener('DOMContentLoaded', function() {
       timeElapsed = Math.round(10*timeElapsed/1000/60/60)/10;
       $('#info').append(`<p>M: ${json.features[i].properties.mag} - ${json.features[i].properties.place} / ${timeElapsed} hours ago</p>`);
       coordinates.push([json.features[i].geometry.coordinates[0], json.features[i].geometry.coordinates[1]]);
-      initMap(coordinates);
     }
   }
+
+  function onError (xhr, status, errorThrown){
+    console.log(xhr, status, errorThrown)
+  }
+  
