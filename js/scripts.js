@@ -1,8 +1,3 @@
-// Add your custom JavaScript code here
-  document.addEventListener('DOMContentLoaded', function() {
-    console.log('Page loaded!');
-  });
-
 ////////////////////////////////////////////////////////////////////////////////////
 //Tron News Populate
 let APIendpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
