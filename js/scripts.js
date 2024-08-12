@@ -26,7 +26,7 @@ document.addEventListener('DOMContentLoaded', function() {
       var timeElapsed = currentTime - quakeTime;
   
       timeElapsed = Math.round(10*timeElapsed/1000/60/60)/10;
-      $('#info').append(`<p>M: ${json.features[i].properties.mag} - ${json.features[i].properties.place} / ${timeElapsed} hours ago</p>`);
+      $('#info').append(`<p>M: ${json.features[i].properties.mag} - ${json.features[i].properties.place} / ${timeElapsed} 小時前</p>`);
       coordinates.push([json.features[i].geometry.coordinates[0], json.features[i].geometry.coordinates[1]]);
     }
   }
@@ -34,4 +34,12 @@ document.addEventListener('DOMContentLoaded', function() {
   function onError (xhr, status, errorThrown){
     console.log(xhr, status, errorThrown)
   }
+
+const element = document.getElementById("myBtn");
+element.addEventListener("click", myFunction);
+
+function myFunction() {
+  console.log("hello world");
+  // document.getElementById("demo").innerHTML = "Hello World";
+}
   
