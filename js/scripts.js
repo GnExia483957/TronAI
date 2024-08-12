@@ -1,10 +1,10 @@
 // Add your custom JavaScript code here
-document.addEventListener('DOMContentLoaded', function() {
+  document.addEventListener('DOMContentLoaded', function() {
     console.log('Page loaded!');
   });
 
 
-  //Tron News Populate
+//Tron News Populate
   var weekly_quakes_endpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
 
   $(document).ready(function() {
@@ -18,7 +18,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
 
   function onSuccess(json){
-
+    console.log(json);
     var currentTime = new Date();
     var coordinates = [];
   
@@ -37,13 +37,13 @@ document.addEventListener('DOMContentLoaded', function() {
     console.log(xhr, status, errorThrown)
   }
 
-
 //See More Button
-const element = document.getElementById("myBtn");
-element.addEventListener("click", myFunction);
-
-function myFunction() {
-  console.log("hello world");
-  // document.getElementById("demo").innerHTML = "Hello World";
-}
+  var buttonArray = ['apple', 'banana', 'cherry', 'date', 'elderberry']
   
+  const element = document.getElementById("myBtn");
+  element.addEventListener("click", myFunction);
+
+  function myFunction() {
+    console.log(buttonArray[Math.floor(Math.random() * buttonArray.length)]);
+    // document.getElementById("demo").innerHTML = "Hello World";
+  }
