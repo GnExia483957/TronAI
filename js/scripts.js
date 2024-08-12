@@ -40,10 +40,24 @@
 //See More Button
   var buttonArray = ['apple', 'banana', 'cherry', 'date', 'elderberry']
   
-  const element = document.getElementById("myBtn");
+  const element = document.getElementById("seeMoreBtn");
   element.addEventListener("click", myFunction);
 
   function myFunction() {
     console.log(buttonArray[Math.floor(Math.random() * buttonArray.length)]);
     // document.getElementById("demo").innerHTML = "Hello World";
   }
+
+
+  const x = document.getElementById("toggleBtn");
+  x.addEventListener("click", toggle);
+
+  function toggle() {
+    var x = document.getElementById("animation");
+    if (x.style.display === "none") {
+      x.style.display = "block";
+    } else {
+      x.style.display = "none";
+    }
+  }
+  
