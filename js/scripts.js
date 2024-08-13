@@ -4,6 +4,8 @@ let APIendpoint = "http://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_
 
 document.addEventListener('DOMContentLoaded', getAPI)
 
+let globalVariable=0;
+
 function getAPI() {
     $.ajax({
       method:'GET',
@@ -25,7 +27,7 @@ function getAPI() {
       let place = json.features[i].properties.place;
       
       let url = json.features[i].properties.url;
-      
+  
       let title = json.features[i].properties.title;
 
       $('#news').append(
@@ -47,13 +49,13 @@ function getAPI() {
   }
 ////////////////////////////////////////////////////////////////////////////////////
 //See More Button
-  let buttonArray = ['apple', 'banana', 'cherry', 'date', 'elderberry']
-  
   const element = document.getElementById("seeMoreBtn");
   element.addEventListener("click", myFunction);
 
   function myFunction() {
-    console.log(buttonArray[Math.floor(Math.random() * buttonArray.length)]);
+    getAPI();
+    globalVariable = globalVariable + 3;
+    console.log("this is the value of the new globalVariable:", globalVariable);
   }
 ////////////////////////////////////////////////////////////////////////////////////
 
