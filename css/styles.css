@@ -2,10 +2,8 @@
 body{
   background-repeat: no-repeat;
   background-image: linear-gradient(#8E0000, black 30%);
-  /* overflow: hidden; */
-  height: 100%;
+  min-height: 100vh;
   width: 100%;
-  position: relative;
 }
 
 h1{
@@ -15,6 +13,36 @@ h1{
   color: white;
   align-items: center;
 }
+
+.box-container{
+  display: flex;
+  justify-content: center;
+  padding: 10px 0 10px 0;
+}
+
+.rounded-box {
+  width: 100px;
+  height: 60px;
+  background: linear-gradient(to bottom, #a70000 50%, #610000 50%);
+  border-radius: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  color: #ffffff;
+  font-weight: bold;
+  position: relative;
+  border: 1px solid #ffffff;
+}
+
+.month-year {
+  font-size: 1rem;
+}
+
+.year {
+  font-size: 1rem;
+}
+
 
 #news{
   display: flex;
@@ -29,7 +57,6 @@ h1{
 .container {
   display: flex;
   flex-direction: column;
-  /* justify-content: space-around; */
 }
 
 .news-container{
@@ -46,24 +73,24 @@ h1{
 
 .time{
   font-size: 1.8rem;
-  color:#FF0000
+  color:#aeaeae
 }
 
 .headline{
   padding-top: 5px;
   padding-left: 15px;
-  color: pink;
+  color: white;
 }
 
 .news{
   padding-top: 5px;
   padding-bottom: 5px;
   padding-left: 15px;
-  color:aqua;
+  color:#aeaeae;
 }
 
 a{
-  color: white;
+  color: #aeaeae;
   padding-left: 15px;
   text-decoration: none;
 }
@@ -132,24 +159,4 @@ input[type=text] {
   cursor: pointer;
   font-size: 16px;
   padding: 5px 20px;
-}
-
-#animation-container{
-  display: none;
-  background: lightblue;
-  padding: 1px;
-}
-
-#animation{
-  visibility: visible;
-  animation-play-state: play;
-  width: 30px;
-  height: 20px;
-  position: relative;
-  animation: myfirst 1.5s infinite;
-}
-
-@keyframes myfirst {
-  0%   {background: blue; left: 0px; top: 0px;}
-  100%  {background: blue; left: 100%; top: 0px;}
 }

@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Tron.Ai</title>
   <link rel="icon" type="image/x-icon" href="assets/images/Tron-Icon.png">
+  <link rel="stylesheet" href="./css/animationStyles.css"></link>
   <link rel="stylesheet" href="./css/navBarStyles.css"></link>
   <link rel="stylesheet" href="./css/styles.css"></link>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
@@ -36,16 +37,23 @@
         <span class="line"></span>
         <span class="line"></span>
       </div>
-    </nav>
+</nav>
 
 
     <h1>Tron News from the past week:</h1>
 
+
+  <div class="box-container">  
+    <div class="rounded-box">
+      <div class="month-year">7月 / 31日</div>
+      <div class="year">2024</div>
+    </div>
+  </div>
+
+
     <div id="news">
     </div>
 
-
-    
       <div class="see-more">
         <button id="seeMoreBtn">查看更多</button>
       </div>
@@ -57,10 +65,13 @@
         </div>
       </div>
 
-    <div id="animation-container">
-      <div id="animation-title">Generating</div>
-      <div id="animation"></div>
-    </div>
+      <div id="loadingIndicator" class="loading-indicator hidden">
+        <div class="loading-text">Generating...</div>
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+      </div>
+    
 
   <script src="./js/scripts.js"> </script>
 </body>
