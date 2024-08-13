@@ -6,6 +6,10 @@ body{
   width: 100%;
 }
 
+.fa-search{
+  color: white;
+}
+
 h1{
   display: flex;
   flex-direction: column;
@@ -16,7 +20,7 @@ h1{
 
 .box-container{
   display: flex;
-  justify-content: center;
+  align-self: center;
   padding: 10px 0 10px 0;
 }
 
@@ -48,10 +52,6 @@ h1{
   display: flex;
   flex-direction: column;
   align-items: center;
-}
-
-.navbar-brand {
-  font-weight: bold;
 }
 
 .container {
