@@ -1,4 +1,4 @@
-let APIendpoint = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/4.5_week.geojson";
+let APIendpoint = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
 // 定义 API 端点的 URL
 // Defines the URL of the API endpoint to be used
 
@@ -27,7 +27,7 @@ function getAPI() {
     method: 'GET',
     url: APIendpoint,
     success: onSuccess,
-    error: onError,
+    error: onError
   });
 }
 // 定义 getAPI 函数，使用 jQuery 的 AJAX 方法从 API 端点获取数据
@@ -59,6 +59,7 @@ function displayNews(newsItems) {
   newsItems.forEach(item => {
     let quakeTime = new Date(item.properties.time);
     let timeElapsed = currentTime - quakeTime;
+
     timeElapsed = Math.round(10 * timeElapsed / 1000 / 60 / 60) / 10;
 
     let place = item.properties.place;
@@ -71,7 +72,7 @@ function displayNews(newsItems) {
           <div class="time">${timeElapsed} 小時前</div>
           <div class="headline">${place}</div>
           <div class="news">${title}</div>
-          <div id="news-link"><a href=${url} target="blank">TheNewsCrypto</a></div>
+          <div id="news-link"><a href=${url} target="blank">Crypto News Link</a></div>
         </div>
       </div>
     `);
@@ -109,10 +110,6 @@ const loadingIndicator = document.getElementById('loadingIndicator');
 // Add a click event listener to the button
 loadingBtn.addEventListener('click', () => {
   // 为按钮添加点击事件监听器
-
-  //loadingIndicator.classList.toggle('visible');
-
-
 
   // Remove the 'hidden' class from the loading indicator to make it visible
   loadingIndicator.classList.remove('hidden');
