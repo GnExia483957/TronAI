@@ -113,7 +113,6 @@ loadingBtn.addEventListener('click', () => {
   loadingContainer.classList.toggle('visible');
 });
   // 为按钮添加点击事件监听器
-
   // Remove the 'hidden' class from the loading indicator to make it visible
   // 移除加载指示器的 'hidden' 类以使其可见
 //////////////////////////////////////////////////////////////////////////////////////
@@ -129,6 +128,7 @@ function getValue() {
 
   if (value !== null) {
     // Display the value after 5 seconds
+    // 5 秒后显示输入值
     setTimeout(function() {
       displayInput(value);
     }, 5000);
@@ -136,7 +136,6 @@ function getValue() {
     console.log("There is no input");
   }
 }
-// 5 秒后显示输入值
 
 function displayInput(value) {
   // Append the input value to the output element
