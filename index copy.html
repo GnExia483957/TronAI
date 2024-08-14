@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Crypto News</title>
+  <style>
+    .container {
+      display: flex;
+      flex-direction: column;
+      white-space: nowrap;
+    }
+
+    .news-container {
+      max-height: 10vh;
+      min-width: 50vw;
+      justify-content: space-between;
+      border-radius: 1.1rem;
+      background-color: #1A1A1A;
+      padding: 30px;
+      font-size: 1.3rem;
+      margin: 10px 0 10px 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+    }
+
+    .time {
+      font-size: 1.8rem;
+      color: #aeaeae;
+      white-space: nowrap;
+    }
+
+    .headline {
+      padding-top: 5px;
+      padding-left: 15px;
+      color: white;
+      white-space: nowrap;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .news {
+      padding-top: 5px;
+      padding-bottom: 5px;
+      padding-left: 15px;
+      color: #aeaeae;
+      flex-grow: 1;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .news-text {
+      white-space: nowrap;
+    }
+
+    a {
+      color: #aeaeae;
+      padding-left: 15px;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    a:hover {
+      color: blue;
+    }
+
+    #info {
+      color: white;
+    }
+
+    @media (max-width: 768px) {
+      .news-text {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="news-container">
+      <div class="time">11 小時前</div>
+      <div class="headline">20x Potential in a Bullish Market: 5 Altcoins Analysts Recommend Add Your Portfolio Now</div>
+      <div class="news"><span class="news-text">Discover 5 altcoins with 20x potential in a bullish market. Experts recommend adding Polygon, TRON, Render, Uniswap, and Polkadot to your portfolio for significant gains.</span></div>
+      <div id="news-link"><a href="" target="blank">Crypto News Link</a></div>
+    </div>
+  </div>
+</body>
+</html>

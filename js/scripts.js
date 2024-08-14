@@ -67,13 +67,11 @@ function displayNews(newsItems) {
     let title = item.properties.title;
 
     $('#news').append(`
-      <div class="container">
-        <div class="news-container">
-          <div class="time">${timeElapsed} 小時前</div>
-          <div class="headline">${place}</div>
-          <div class="news">${title}</div>
-          <div id="news-link"><a href=${url} target="blank">Crypto News Link</a></div>
-        </div>
+      <div class="news-container">
+        <div class="time">${timeElapsed} 小時前</div>
+        <div class="headline">${place}</div>
+        <div class="news">${title}</div>
+        <div id="news-link"><a href=${url} target="blank">Crypto News Link</a></div>
       </div>
     `);
   });

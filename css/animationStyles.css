@@ -8,8 +8,6 @@
   transition: visibility 0.3s, opacity 0.3s;
 }
 
-
-
 .loading-container.visible {
   visibility: visible;
   opacity: 1;
@@ -46,7 +44,7 @@
   width: 100px;
   height: 100%;
   background: linear-gradient(to right, rgba(76, 175, 80, 0), #870000,  rgba(76, 175, 80, 0));
-  animation: loading-box 2s infinite ease-in-out;
+  animation: loading-box 1.3s infinite ease-in-out;
 }
 
 @keyframes loading-box {
