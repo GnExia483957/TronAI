@@ -5,7 +5,7 @@
   justify-content: center;
   visibility: hidden;
   opacity: 0;
-  transition: visibility 0.3s, opacity 0.3s;
+  transition: visibility 0.1s, opacity 0.1s;
 }
 
 .loading-container.visible {
@@ -28,7 +28,6 @@
   background-color: #ddd;
   position: relative;
   overflow: hidden;
-
 }
 
 @media (max-width: 767px) {
@@ -41,7 +40,7 @@
   content: "";
   display: block;
   position: absolute;
-  width: 100px;
+  width: 130px;
   height: 100%;
   background: linear-gradient(to right, rgba(76, 175, 80, 0), #870000,  rgba(76, 175, 80, 0));
   animation: loading-box 1.3s infinite ease-in-out;
