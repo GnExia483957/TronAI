@@ -134,13 +134,13 @@ a:hover{
 .inner-search input {
   border: none;
   flex-grow: 1;
-  font-size: 16px;
-  padding: 5px 100px;
+  font-size: 20px;
   background-color: #0F0F0F;
+  padding-left: 5px;
 }
 
 .inner-search ::placeholder{
-  color: white;
+  color: rgb(117, 117, 117);
 }
 
 input[type=text] {
@@ -155,4 +155,8 @@ input[type=text] {
   cursor: pointer;
   font-size: 16px;
   padding: 5px 20px;
+}
+
+.output{
+  color: white;
 }

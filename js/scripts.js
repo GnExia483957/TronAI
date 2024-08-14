@@ -117,3 +117,33 @@ loadingBtn.addEventListener('click', () => {
   // Remove the 'hidden' class from the loading indicator to make it visible
   // 移除加载指示器的 'hidden' 类以使其可见
 //////////////////////////////////////////////////////////////////////////////////////
+
+function getValue() {
+  // Get the input element
+  // 获取输入元素
+  var input = document.getElementById("myInput");
+
+  // Get the value of the input
+  // 获取输入值
+  var value = input.value;
+
+  if (value !== null) {
+    // Display the value after 5 seconds
+    setTimeout(function() {
+      displayInput(value);
+    }, 5000);
+  } else {
+    console.log("There is no input");
+  }
+}
+// 5 秒后显示输入值
+
+function displayInput(value) {
+  // Append the input value to the output element
+  // 将输入值添加到输出元素中
+  $('.output').append(`<div>${value}</div>`);
+
+  // Toggle the visibility of the loading container
+  // 切换加载容器的可见性
+  loadingContainer.classList.toggle('visible');
+}
