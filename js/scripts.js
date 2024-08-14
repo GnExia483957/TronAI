@@ -104,15 +104,18 @@ const loadingBtn = document.getElementById('toggleBtn');
 // AI 按钮
 // 获取 ID 为 'toggleBtn' 的元素
 
+const loadingContainer = document.querySelector('.loading-container');
+const toggleButton = document.getElementById('toggleButton');
+
 const loadingIndicator = document.getElementById('loadingIndicator');
 // 获取 ID 为 'loadingIndicator' 的元素
 
 // Add a click event listener to the button
 loadingBtn.addEventListener('click', () => {
+  loadingContainer.classList.toggle('visible');
+});
   // 为按钮添加点击事件监听器
 
   // Remove the 'hidden' class from the loading indicator to make it visible
-  loadingIndicator.classList.remove('hidden');
   // 移除加载指示器的 'hidden' 类以使其可见
-});
 //////////////////////////////////////////////////////////////////////////////////////
