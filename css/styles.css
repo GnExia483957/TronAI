@@ -20,8 +20,8 @@ h1{
 
 .box-container{
   display: flex;
-  align-self: center;
-  padding: 10px 0 10px 0;
+  align-self: flex-start;
+  padding: 10px 0 10px 125px;
 }
 
 .rounded-box {
@@ -74,7 +74,7 @@ h1{
   padding-top: 5px;
   padding-left: 15px;
   font-weight: 900;
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: white;
 }
 
