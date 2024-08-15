@@ -160,3 +160,5 @@ input[type=text] {
 .output{
   color: white;
 }
+
+.grecaptcha-badge { visibility: hidden; }
