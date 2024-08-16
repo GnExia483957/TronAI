@@ -154,3 +154,36 @@ function errorInput(){
   console.log("There is no input");
   loadingContainer.classList.toggle('visible');
 }
+
+
+
+///////////////////////////////////////////////////////////////////////////
+//test algorithm that filters out sentences without certain words
+
+const sentences = [
+  "The Tron Foundation is a blockchain company.",
+  "USDT is a popular stablecoin.",
+  "Justin Sun is the CEO of Tron.",
+  "Ethereum is a popular blockchain platform.",
+  "I invested in USDT last year.",
+  "The Tron network has fast transaction speeds.",
+  "Justin Sun is a influential figure in the cryptocurrency space.",
+  "Bitcoin is the most well-known cryptocurrency.",
+  "USDT is used for trading on many exchanges.",
+  "The Tron project has been expanding recently."
+];
+
+const filteredSentences = sentences.filter(sentence =>
+  sentence.includes("Tron") || sentence.includes("USDT") || sentence.includes("Justin")
+);
+
+const filteredOutSentences = sentences.filter(sentence =>
+  !sentence.includes("Tron") && !sentence.includes("USDT") && !sentence.includes("Justin")
+);
+
+console.log("Filtered Sentences:");
+console.log(filteredSentences);
+
+console.log("\nFiltered Out Sentences:");
+console.log(filteredOutSentences);
+///////////////////////////////////////////////////////////////////////////

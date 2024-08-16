@@ -9,4 +9,4 @@ if (!window["WIZ_gab_global_data"]) {
     s.async = true;
     s.crossorigin = "anonymous";
     document.head.appendChild(s);
-} 
+}
