@@ -10,9 +10,9 @@ const loadingIndicator = document.getElementById('loadingIndicator');
 // 获取 ID 为 'loadingIndicator' 的元素
 
 // Add a click event listener to the button
-loadingBtn.addEventListener('click', () => {
-  loadingContainer.classList.toggle('visible');
-});
+// loadingBtn.addEventListener('click', () => {
+//   loadingContainer.classList.toggle('visible');
+// });
   // 为按钮添加点击事件监听器
   // Remove the 'hidden' class from the loading indicator to make it visible
   // 移除加载指示器的 'hidden' 类以使其可见
@@ -84,7 +84,4 @@ const filteredOutSentences = sentences.filter(sentence =>
 
 console.log("Filtered Sentences:");
 console.log(filteredSentences);
-
-console.log("\nFiltered Out Sentences:");
-console.log(filteredOutSentences);
 ///////////////////////////////////////////////////////////////////////////

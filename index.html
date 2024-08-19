@@ -19,7 +19,9 @@
   <nav>
         <div class="logo">
           <img src="./assets/images/Tron-Icon.png" alt="logo" />
-          <h1>TRON.AI</h1>
+          <a href="index.html">
+            <h1>TRON.AI</h1>
+          </a>
         </div>
         <ul>
           <li>
@@ -57,7 +59,9 @@
       <div class="search-container">
         <div class="inner-search">
           <input class ="fa fa-search" id="myInput" type="text" placeholder="支持普通用户和开发者"></input>
-          <button id="searchWidgetTrigger" onclick="getValue()" id="toggleBtn">AI问答</button>
+          <a href="AI.html">
+            <button id="searchWidgetTrigger" onclick="getValue()" id="toggleBtn">AI问答</button>
+          </a>
         </div>
       </div>
 
@@ -68,20 +72,6 @@
 
       <div class="output">
       </div>
-
-
-      <!-- Widget JavaScript bundle -->
-      <!-- <script src="./js/googleScripts.js"></script> -->
-      <script src="https://cloud.google.com/ai/gen-app-builder/client?hl=en_US"></script>
-
-
-      <!-- <input class ="fa fa-search" id="searchWidgetTrigger" type="text" placeholder="支持普通用户和开发者"></input> -->
-
-      <!-- Search widget element is not visible by default -->
-      <gen-search-widget
-        configId="795edc9c-929e-4580-81ed-d0c8d1f738b3"
-        triggerId="searchWidgetTrigger">
-      </gen-search-widget>
 
   <script src="./js/scripts.js"> </script>
   <script src="./js/newsScripts.js"> </script>
