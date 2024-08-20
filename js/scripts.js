@@ -2,11 +2,27 @@ let currentIndex = 0;
 const itemsPerPage = 3;
 const currentDate = new Date().toISOString().slice(0, 10);
 
+let newDate = new Date();
+let currentMonth = newDate.getMonth() + 1; // Months are zero-indexed, so we add 1
+let currentDay = newDate.getDate();
+let currentYear = newDate.getFullYear();
+
+
 function getDaysDiff(newsDate) {
   const oneDay = 24 * 60 * 60 * 1000;
   const diffDays = Math.round(Math.abs((new Date(currentDate) - new Date(newsDate)) / oneDay));
   return diffDays;
 }
+
+$('#news').append(`
+  <div class="box-container">  
+      <div class="rounded-box">
+        <div class="month-year">${currentMonth} 月 / ${currentDay} 日</div>
+        <div class="year">${currentYear}</div>
+    </div>
+  </div>
+`);
+
 
 function loadNews() {
   fetch("../data.json")
