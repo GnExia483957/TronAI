@@ -55,12 +55,13 @@ h1{
 
 .news-container{
   max-height: 10vh;
-  min-width: 50vw;
+  max-width: 70vw;
+  min-width: 70vw;
   justify-content: space-between;
   border-radius: 1.1rem;
   background-color: #1A1A1A;
   padding: 30px;
-  font-size: 1.3rem;
+  font-size: 1rem;
   margin: 10px 0 10px 0;
 
 }
