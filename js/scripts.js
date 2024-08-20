@@ -1,4 +1,6 @@
 let APIendpoint = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
+let APIendpoint2 = "https://api.jsonserve.com/BYTmt6#";
+
 // 定义 API 端点的 URL
 // Defines the URL of the API endpoint to be used
 
@@ -122,7 +124,7 @@ const filteredOutSentences = sentences.filter(sentence =>
   !sentence.includes("Tron") && !sentence.includes("USDT") && !sentence.includes("Justin")
 );
 
-console.log("Filtered Sentences:");
-console.log(filteredSentences);
+// console.log("Filtered Sentences:");
+// console.log(filteredSentences);
 ///////////////////////////////////////////////////////////////////////////
 

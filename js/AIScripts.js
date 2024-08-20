@@ -74,7 +74,7 @@ function aiSearch(query){
         <div class="AI-Search-Results">
           <div id="results-link">${data.results[i].document.derivedStructData.link}/</div>
           <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
-          <div id="results-description">${data.results[i].document.derivedStructData.extractive_answers[0].content}</div> 
+          <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div> 
         </div>
       `);
     }
@@ -130,6 +130,7 @@ function aiSearch(query){
   .then(response => response.json())
   .then(data => {
     let output = data.answer.answerText;
+    console.log(data);
       // Handle the response data
       appendText(output);
   })
