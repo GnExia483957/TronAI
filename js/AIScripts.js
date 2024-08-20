@@ -46,24 +46,12 @@ function getValue() {
   }
 }
 
-// function displayInput(value) {
-//   // Append the input value to the output element
-//   // 将输入值添加到输出元素中
-//   $('.output').append(`<div>${value}</div>`);
-  
-//   // Toggle the visibility of the loading container
-//   // 切换加载容器的可见性
-//   loadingContainer.classList.toggle('visible');
-// }
-
 function errorInput(){
   console.log("There is no input");
   loadingContainer.classList.toggle('visible');
 }
 
 function aiSearch(query){
-  console.log("this is the ai search #1");
-  console.log(query);
   //Make the AJAX request
   fetch(apiUrl, {
     method: 'POST',
@@ -80,8 +68,17 @@ function aiSearch(query){
   })
   .then(response => response.json())
   .then(data => {
-    // console.log(data);
     // Handle the response data
+    for(i = 0; i < pageSize; i++){
+      $('.result-container').append(`
+        <div class="AI-Search-Results">
+          <div id="results-link">${data.results[i].document.derivedStructData.link}/</div>
+          <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
+          <div id="results-description">${data.results[i].document.derivedStructData.extractive_answers[0].content}</div> 
+        </div>
+      `);
+    }
+
     let queryId1 = data.sessionInfo.queryId
     let sessionName = data.sessionInfo.name
     // console.log(queryId1);
@@ -94,10 +91,9 @@ function aiSearch(query){
     loadingContainer.classList.toggle('visible');
   });
 }
-  
-  
-  ////////////////////////////////////////////////////////////////////////////////////
-  
+
+////////////////////////////////////////////////////////////////////////////////////
+
   // Set the request parameters
   function apiCall2(query, queryId1, sessionName){
 
@@ -106,7 +102,6 @@ function aiSearch(query){
       text: query,
       queryId: queryId1
   };
-  console.log(query2);
   const session2 = sessionName;
   const relatedQuestionsSpec = {
       enable: true
@@ -137,7 +132,6 @@ function aiSearch(query){
     let output = data.answer.answerText;
       // Handle the response data
       appendText(output);
-      console.log(output);
   })
   .catch(error => {
       // Handle any errors
@@ -148,6 +142,7 @@ function aiSearch(query){
 function appendText(output){
   $('.output').append(`
     <div class="AI-Container">
+      <div id="ai-header">Generative AI</div>
       <div id="ai-text">${output}</div>
     </div>
   `);

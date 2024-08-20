@@ -20,11 +20,11 @@
 }
 
 .result-container{
-    background: white;
-    padding-bottom: 30px;
 }
 
 .AI-Search-Results{
+    background: white;
+    padding-bottom: 30px;
     padding: 25px 20px 15px 40px ;
     color: black;
     font-size: 1.3rem;
