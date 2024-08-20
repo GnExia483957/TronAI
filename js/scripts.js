@@ -1,17 +1,22 @@
-let APIendpoint = "https://earthquake.usgs.gov/earthquakes/feed/v1.0/summary/significant_month.geojson";
-
-
 let currentIndex = 0;
 const itemsPerPage = 3;
+const currentDate = new Date().toISOString().slice(0, 10);
+
+function getDaysDiff(newsDate) {
+  const oneDay = 24 * 60 * 60 * 1000;
+  const diffDays = Math.round(Math.abs((new Date(currentDate) - new Date(newsDate)) / oneDay));
+  return diffDays;
+}
 
 function loadNews() {
   fetch("../data.json")
     .then((res) => res.json())
     .then((data) => {
       for (let i = currentIndex; i < currentIndex + itemsPerPage; i++) {
+        
         $('#news').append(`
           <div class="news-container">
-            <div class="time">${data[i].date}</div>
+            <div class="time">${getDaysDiff(data[i].date)} days ago</div>
             <div class="headline">${data[i].headline}</div>
             <div class="news">${data[i].subheadline}</div>
             <div id="news-link"><a href=${data[i].url} target="blank">Crypto News Link</a></div>
@@ -33,6 +38,7 @@ document.addEventListener('DOMContentLoaded', loadNews());
 $('#seeMoreBtn').click(function() {
   loadNews(currentIndex);
 });
+
 
 
 ////////////////////////////////////////////////////////////////////////////////////
