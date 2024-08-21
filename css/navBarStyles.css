@@ -10,12 +10,12 @@ nav .logo {
 }
 
 nav .logo img {
-  height: 50px;
+  height: 30px;
   width: auto;
 }
 
 nav .logo h1 {
-  font-size: 3rem;
+  font-size: 1.1rem;
   color: white;
 }
 
@@ -29,7 +29,7 @@ nav ul li {
 nav ul li a {
   text-decoration: none;
   color: white;;
-  font-size: 95%;
+  font-size: 80%;
   font-weight: 400;
   padding: 4px 8px;
   border-radius: 5px;
