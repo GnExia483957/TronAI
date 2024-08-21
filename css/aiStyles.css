@@ -1,56 +1,93 @@
-.output{
+.output {
     display: flex;
     flex-direction: column;
     justify-content: center;
     max-width: 100%;
 }
 
-.AI-Container{
+.AI-Container {
     border-radius: 15px 15px 0px 0px;
     padding: 2rem;
     background: hsl(223, 100%, 91%);
     color: #202125;
-
 }
 
-#ai-text{
+#ai-text {
     padding: 15px;
     font-size: 1.4rem;
     line-height: 1.6;
 }
 
-.result-container{
+.result-container {
     background: white;
 }
 
-#reference-header{
+#reference-header {
     background: white;
     padding-top: 20px;
     padding-left: 20px;
     color: black;
 }
 
-.AI-Search-Results{
+.AI-Search-Results {
     background: white;
     padding-bottom: 30px;
-    padding: 0px 20px 0px 40px ;
+    padding: 0px 20px 0px 40px;
     color: black;
     font-size: 1.3rem;
     line-height: 1.5;
     text-decoration: none;
 }
 
-#results-link{
+#results-link {
     color: gray;
 }
 
-#results-header{
+#results-header {
     font-size: 25px;
     font-weight: 900;
     color: black;
 }
 
-#results-description{
+#results-description {
     font-weight: 400;
-    color: #7f7f7f
+    color: #7f7f7f;
+}
+
+@media (max-width: 767px) {
+    .AI-Container {
+        padding: 1.5rem;
+    }
+
+    #ai-text {
+        font-size: 1.2rem;
+    }
+
+    .AI-Search-Results {
+        padding: 0px 15px 0px 30px;
+        font-size: 1.1rem;
+    }
+
+    #results-header {
+        font-size: 22px;
+    }
+}
+
+@media (max-width: 480px) {
+    .AI-Container {
+        padding: 1rem;
+    }
+
+    #ai-text {
+        font-size: 1rem;
+    }
+
+    .AI-Search-Results {
+        padding: 0px 10px 0px 20px;
+        font-size: 1rem;
+    }
+
+    #results-header {
+        font-size: 18px;
+    }
 }
