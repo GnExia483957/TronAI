@@ -69,15 +69,7 @@ function aiSearch(query){
   .then(response => response.json())
   .then(data => {
     // Handle the response data
-    for(i = 0; i < pageSize; i++){
-      $('.result-container').append(`
-        <div class="AI-Search-Results">
-          <div id="results-link">${data.results[i].document.derivedStructData.link}/</div>
-          <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
-          <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div> 
-        </div>
-      `);
-    }
+    appendResults(data);
 
     let queryId1 = data.sessionInfo.queryId
     let sessionName = data.sessionInfo.name
@@ -90,6 +82,29 @@ function aiSearch(query){
     console.error(error);
     loadingContainer.classList.toggle('visible');
   });
+}
+function appendResults(data) {
+  // Check if the .AI-Search-Results element already exists
+  if ($('.AI-Search-Results').length > 0) {
+    // Update the existing .AI-Search-Results element
+    $('.AI-Search-Results').each(function(index) {
+      // Update the content of the existing .AI-Search-Results element
+      $(this).find('#results-link').text(data.results[index].document.derivedStructData.link);
+      $(this).find('#results-header').text(data.results[index].document.derivedStructData.title);
+      $(this).find('#results-description').text(data.results[index].document.derivedStructData.snippets[0].snippet);
+    });
+  } else {
+    // Create a new .AI-Search-Results element
+    for (let i = 0; i < pageSize; i++) {
+      $('.result-container').append(`
+        <div class="AI-Search-Results">
+          <div id="results-link">${data.results[i].document.derivedStructData.link}</div>
+          <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
+          <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div>
+        </div>
+      `);
+    }
+  }
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
