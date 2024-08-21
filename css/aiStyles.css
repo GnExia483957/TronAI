@@ -25,10 +25,6 @@
     line-height: 1.6;
 }
 
-.result-container {
-    background: white;
-}
-
 #reference-header {
     background: white;
     padding-top: 20px;
@@ -38,11 +34,9 @@
 
 .AI-Search-Results {
     background: white;
-    padding-bottom: 30px;
     padding: 0px 20px 0px 40px;
     color: black;
-    font-size: 1.3rem;
-    line-height: 1.5;
+    line-height: 1.2;
     text-decoration: none;
 }
 

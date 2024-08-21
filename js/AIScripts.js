@@ -109,7 +109,7 @@ function appendSearchResults(data) {
     `);
 
     for (let i = 0; i < pageSize; i++) {
-      $('.result-container').append(`
+      $('#reference-header').append(`
         <div class="AI-Search-Results">
         <a href="${data.results[i].document.derivedStructData.link}">
           <div id="results-link">${data.results[i].document.derivedStructData.link}</div>
