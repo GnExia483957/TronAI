@@ -29,16 +29,8 @@ loadingBtn.addEventListener('click', () => {
   loadingContainer.classList.toggle('visible');
 });
 //////////////////////////////////////////////////////////////////////////////////////
-
 function clearAIDivs() {
-  const elementsToClear = document.querySelectorAll(`#ai-text`);
-  elementsToClear.forEach(element => {
-    element.textContent = '';
-  });
-}
-
-function clearSearchResultDiv() {
-  const elementsToClear = document.querySelectorAll(`.AI-Search-Results`);
+  const elementsToClear = document.querySelectorAll('#ai-text, .AI-Search-Results');
   elementsToClear.forEach(element => {
     element.textContent = '';
   });
@@ -54,7 +46,6 @@ function getValue() {
   let value = input.value;
 
   if (value.trim() !== "") {
-    clearSearchResultDiv();
     clearAIDivs();
     aiSearch(value);
   } else {
