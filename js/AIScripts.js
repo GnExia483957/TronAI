@@ -28,9 +28,6 @@ const loadingIndicator = document.getElementById('loadingIndicator');
 loadingBtn.addEventListener('click', () => {
   loadingContainer.classList.toggle('visible');
 });
-  // 为按钮添加点击事件监听器
-  // Remove the 'hidden' class from the loading indicator to make it visible
-  // 移除加载指示器的 'hidden' 类以使其可见
 //////////////////////////////////////////////////////////////////////////////////////
 
 function getValue() {
@@ -43,23 +40,15 @@ function getValue() {
   let value = input.value;
 
   if (value.trim() !== "") {
-    // Display the value after 5 seconds
-    // 5 秒后显示输入值
-    setTimeout(function() {
-      aiSearch(value);
-    }, 5000);
+    aiSearch(value);
   } else {
-    setTimeout(function() {
-      errorInput();
-    }, 5000);
+    errorInput();
   }
 }
 
 function errorInput(){
   console.log("There is no input");
-  
-  loadingContainer.remove();
-}
+  }
 
 function aiSearch(query) {
   // Make the fetch request
@@ -92,11 +81,8 @@ function aiSearch(query) {
   .catch(error => {
     // Handle any errors
     console.error(error);
-    loadingContainer.remove();
   });
 }
-
-
 
 function appendSearchResults(data) {
   // Check if the .AI-Search-Results element already exists
@@ -127,9 +113,10 @@ function appendSearchResults(data) {
     }
   }
 }
+
 ////////////////////////////////////////////////////////////////////////////////////
 
-  // Set the request parameters
+// Set the request parameters
   function apiCall2(query, queryId1, sessionName, initialData){
 
   const apiUrl2 = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:answer';
