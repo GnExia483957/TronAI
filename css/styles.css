@@ -26,7 +26,7 @@ h1 {
 
 .box-container {
   display: flex;
-  align-self: flex-start;
+  align-self: center;
   padding: 10px 0 10px 125px;
 }
 

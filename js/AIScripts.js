@@ -57,11 +57,12 @@ function getValue() {
 
 function errorInput(){
   console.log("There is no input");
-  loadingContainer.classList.toggle('visible');
+  
+  loadingContainer.remove();
 }
 
-function aiSearch(query){
-  //Make the AJAX request
+function aiSearch(query) {
+  // Make the fetch request
   fetch(apiUrl, {
     method: 'POST',
     headers: {
@@ -75,23 +76,28 @@ function aiSearch(query){
       spellCorrectionSpec: spellCorrectionSpec
     })
   })
-  .then(response => response.json())
+  .then(response => {
+    if (!response.ok) {
+      throw new Error(`HTTP error ${response.status}`);
+    }
+    return response.json();
+  })
   .then(data => {
     // Handle the response data
-    let initalData = data;
-    
-    let queryId1 = data.sessionInfo.queryId
-    let sessionName = data.sessionInfo.name
-    // console.log(queryId1);
-    // console.log(sessionName);
-    apiCall2(query, queryId1, sessionName, initalData);
+    let initialData = data;
+    let queryId1 = data.sessionInfo.queryId;
+    let sessionName = data.sessionInfo.name;
+    apiCall2(query, queryId1, sessionName, initialData);
   })
   .catch(error => {
     // Handle any errors
     console.error(error);
-    loadingContainer.classList.toggle('visible');
+    loadingContainer.remove();
   });
 }
+
+
+
 function appendSearchResults(data) {
   // Check if the .AI-Search-Results element already exists
   if ($('.AI-Search-Results').length > 0) {
@@ -121,7 +127,6 @@ function appendSearchResults(data) {
     }
   }
 }
-
 ////////////////////////////////////////////////////////////////////////////////////
 
   // Set the request parameters
@@ -143,7 +148,7 @@ function appendSearchResults(data) {
       includeCitations: true
   };
   
-  // Make the AJAX request
+  // Make the fetch request 2
   fetch(apiUrl2, {
       method: 'POST',
       headers: {
@@ -161,7 +166,9 @@ function appendSearchResults(data) {
   .then(data => {
     let output = data.answer.answerText;
       // Handle the response data
+      //loadingContainer.remove();
       loadingContainer.classList.toggle('visible');
+
       appendText(output);
       appendSearchResults(initialData);
   })
