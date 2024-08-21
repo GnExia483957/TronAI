@@ -130,8 +130,8 @@ function aiSearch(query){
   .then(response => response.json())
   .then(data => {
     let output = data.answer.answerText;
-    console.log(data);
       // Handle the response data
+      loadingContainer.classList.toggle('visible');
       appendText(output);
   })
   .catch(error => {
@@ -140,12 +140,46 @@ function aiSearch(query){
   });
 }
 
-function appendText(output){
-  $('.output').append(`
-    <div class="AI-Container">
-      <div id="ai-header">Generative AI</div>
-      <div id="ai-text">${output}</div>
-    </div>
-  `);
-  loadingContainer.classList.toggle('visible');
+function appendText(output) {
+  var outputElement = document.querySelector('.output');
+  var aiContainer = outputElement.querySelector('.AI-Container');
+
+  if (!aiContainer) {
+    aiContainer = document.createElement('div');
+    aiContainer.classList.add('AI-Container');
+
+    var aiHeader = document.createElement('div');
+    aiHeader.id = 'ai-header';
+    aiHeader.textContent = 'Generative AI';
+
+    var aiText = document.createElement('div');
+    aiText.id = 'ai-text';
+    aiContainer.appendChild(aiHeader);
+    aiContainer.appendChild(aiText);
+
+    outputElement.appendChild(aiContainer);
+  } else {
+    var aiText = aiContainer.querySelector('#ai-text');
+  }
+
+  typeText(aiText, output);
 }
+
+function typeText(element, text) {
+  element.textContent = '';
+  var words = text.split(' ');
+  var index = 0;
+  var interval = 50; // Adjust the typing speed (in milliseconds)
+
+  function typeWord() {
+    if (index < words.length) {
+      element.textContent += words[index] + ' ';
+      index++;
+      setTimeout(typeWord, interval);
+    } else {
+    }
+  }
+
+  typeWord();
+}
+

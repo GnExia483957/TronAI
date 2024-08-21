@@ -32,7 +32,7 @@ function loadNews() {
         
         $('#news').append(`
           <div class="news-container">
-            <div class="time">${getDaysDiff(data[i].date)} days ago</div>
+            <div class="time">${getDaysDiff(data[i].date)} 天前</div>
             <div class="headline">${data[i].headline}</div>
             <div class="news">${data[i].subheadline}</div>
             <div id="news-link"><a href=${data[i].url} target="blank">Crypto News Link</a></div>
