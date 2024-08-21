@@ -1,5 +1,14 @@
+window.addEventListener('load', function() {
+  const inputValue = localStorage.getItem('inputValue');
+  if (inputValue) {
+    document.getElementById('myInput').value = inputValue;
+    loadingContainer.classList.toggle('visible');
+    getValue(inputValue);
+  }
+});
+
 const apiUrl = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:search';
-const authToken = 'Bearer ya29.c.c0ASRK0GY1S1MY4zd2-e_z3FDX_5IB41VB5vxfsyfXjv8GA9ZJNi_zAdVwiYkmjQ78nKXY-qjUGgesOJPvcnso2u1YRcCGuTopPtEtvKsM-evRleccREuCEUkdu1AlcxVBAUJY_NHCqbF_d8B3RWkitJv8yIvOjJ74ZufmagWLWeBBeQa9OCZYeUAK_Leo5xi_OU3pL949c66luIdRCix2HPrenZTfZj-8QNljl4urY3ubDwkTZuU8qdQ8UVv11i17a-l91ainrFDcM25PErBviIGt1fMgP7CKcZ6_WxlYv5yI8Xh7oyChCytu1_8hIcH5phPJLxWpCkha4EtamQyntvBP6qXKxgFuSU4zdY0sjFHMPa41sfSF2znWfStGgHhk8psqVDwqVDneZjK8-kDnR52XxpwzmtuDywpxtpOyTJ-8kGfBapLiRqWYkQqcWCvkUrQKIj1JlnPMzYIbeBs8a5uidl9JrjeK0_aTSMqFfYkvOLhSvb_mj4GhWp-kZDq4e9XLeqRAgrsMnywhm0IXOfwO2ipIkCqQKubzv_-hxFZlbFqxLH4okpCEHJlhpQzDt8TV5FKWPGTTM_NkGAr2vOuwFqi5WDQle2ipVBSAuEKCKPfSEBhqa2zlnDbI4J4H648KBapQtrV9Syf1rkOXbUbv2p0OIQ6c5s6_rW8b3tJ3uoXSnubZMw_uc38qJp0fVpg6WgQp8VVhJk8l04tUuB-9-ZY_9W5bnhm-kRxs2drmhcz91czp7QWxb7VYwX4jq96VSStZjFv_Uvjvbres4h68ObimXf3o2_urxO__q9h9bdq9nXi_IFQ9vhJgjI5ym_Ulp9XwSkWvudpvqhWnf-kxnuhc5Wc7op0R209XStwrhomduYBOvOk0VVJjg30_gp0rWfZfoF5woXJOt1miOBsnJogr8t0w1jByZ5hUfrXB6fxJ_t5J2vVtYvda25IBdf1jFhw1lBzxSRsZ2izU2Oaw1cMIZtpXq-u-7QFe5czXI5pvy-yUsiQ';
+const authToken = 'Bearer ya29.c.c0ASRK0GbRLM0t0kjHCJqe-9OfUfjQ6CQAqgmXnJyzcn4lvAY19VI2wxi49acCTnOejNGLAW1J_UCTsY6ha-JGCBD81Q9HXDvDq07vIzy5knIw_XWJnP-517YNoETijSzz5G7hFK_iXwvNltVzKfwgheo8oXHHNE7Hz6Wb0R2AVS9n2bvLHu5E_Imre1PT471d8KnZ3wLGJyMPpVri5muz0KEIZNNa8V5-fJkqgObMG3MiHK3RU39W3rhl7eVwi2iH2N9n30BTKNjBNLg0Xs20j2TI3thJzJnPc-cLEJXSapVswxan_Z8cO0aumVKjjaym9P0a6PGGZLfI93boPjEuDOEiJqKkw0L7XbtqY1IiX9Q8qWVqFwBW3_-T8YDusVsv4hWGRPM3qYigILiq4IopXqZonYVY70yvVBD2AbexaBpO-hU5kib9zPflYUC3qdchH3lwmmkYxGMPyysIruHJaRv0MtIr9tyBLJtJa1PDkV0gfL3LCXnMeWUAJJcHqmVc7tfKZJY6Ws1jhep-VCgBT6vWPbdaXkLGVHHmf8QBqi9ScjddzOTK52vKVgfE3HDPxuAcRXPoYGmkOpJ079ipvtUQC5aQLb1k-kYPFrRgs4b0_Jffn8oMUKOGgulRL645DYuemwWgq9_5aFikXSy6lIipns44Fg5XzpIbpY3bjgFkeldQjQ89YWZ7coIMmYkyfpBgpgJO0wSxgRcSS20ulq99zbxyWOXMbI-f_sIQ7XWySXipweUFI_jV9RQMzeagkUMvdF1FfX7lcBQqg9mOVgZrm52JQcqU7746M45BQbh1MVeF_n3Z779MxrX4FmslUQdu18U7QFs5U5OeVgfo5labf1p-QOn5wk-_3S1l6_hhbBnvsxYW_oSk9v2y8kbV7IpfbIbgR1Y1VdZgp973kRjbW25ZmuvXJvjXfb5ZiXxid9RmIFZxxvtlaW4ulXF8ngh33WzIXImsF4r2n3BU13dhi3xiJgJpkSJ_5Z5O4kS0c9hqiIBM7OZ';
 const pageSize = 3;
 const session = 'projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/sessions/-';
 const spellCorrectionSpec = { mode: 'AUTO' };
@@ -69,13 +78,13 @@ function aiSearch(query){
   .then(response => response.json())
   .then(data => {
     // Handle the response data
-    appendResults(data);
-
+    let initalData = data;
+    
     let queryId1 = data.sessionInfo.queryId
     let sessionName = data.sessionInfo.name
     // console.log(queryId1);
     // console.log(sessionName);
-    apiCall2(query, queryId1, sessionName);
+    apiCall2(query, queryId1, sessionName, initalData);
   })
   .catch(error => {
     // Handle any errors
@@ -83,7 +92,7 @@ function aiSearch(query){
     loadingContainer.classList.toggle('visible');
   });
 }
-function appendResults(data) {
+function appendSearchResults(data) {
   // Check if the .AI-Search-Results element already exists
   if ($('.AI-Search-Results').length > 0) {
     // Update the existing .AI-Search-Results element
@@ -95,13 +104,19 @@ function appendResults(data) {
     });
   } else {
     // Create a new .AI-Search-Results element
+    $('.result-container').append(`
+      <div id="reference-header">Reference Documentation</div>
+    `);
+
     for (let i = 0; i < pageSize; i++) {
       $('.result-container').append(`
         <div class="AI-Search-Results">
+        <a href="${data.results[i].document.derivedStructData.link}">
           <div id="results-link">${data.results[i].document.derivedStructData.link}</div>
           <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
           <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div>
-        </div>
+          </div>
+        </a>
       `);
     }
   }
@@ -110,7 +125,7 @@ function appendResults(data) {
 ////////////////////////////////////////////////////////////////////////////////////
 
   // Set the request parameters
-  function apiCall2(query, queryId1, sessionName){
+  function apiCall2(query, queryId1, sessionName, initialData){
 
   const apiUrl2 = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:answer';
   const query2 = {
@@ -148,6 +163,7 @@ function appendResults(data) {
       // Handle the response data
       loadingContainer.classList.toggle('visible');
       appendText(output);
+      appendSearchResults(initialData);
   })
   .catch(error => {
       // Handle any errors
@@ -165,7 +181,7 @@ function appendText(output) {
 
     var aiHeader = document.createElement('div');
     aiHeader.id = 'ai-header';
-    aiHeader.textContent = 'Generative AI';
+    aiHeader.textContent = 'Generated Answer';
 
     var aiText = document.createElement('div');
     aiText.id = 'ai-text';

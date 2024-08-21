@@ -8,7 +8,7 @@
 .AI-Container{
     border-radius: 15px 15px 0px 0px;
     padding: 2rem;
-    background: #f4f6fb;
+    background: hsl(223, 100%, 91%);
     color: #202125;
 
 }
@@ -19,10 +19,21 @@
     line-height: 1.6;
 }
 
+.result-container{
+    background: white;
+}
+
+#reference-header{
+    background: white;
+    padding-top: 20px;
+    padding-left: 20px;
+    color: black;
+}
+
 .AI-Search-Results{
     background: white;
     padding-bottom: 30px;
-    padding: 25px 20px 15px 40px ;
+    padding: 0px 20px 0px 40px ;
     color: black;
     font-size: 1.3rem;
     line-height: 1.5;

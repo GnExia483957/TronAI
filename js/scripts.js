@@ -20,16 +20,15 @@ function getTimeAgo(newsDate, newsTime) {
   const newsDateTime = new Date(`${newsDate}T${newsTime}`);
   const currentDateTime = new Date();
   const diffMs = currentDateTime - newsDateTime;
-  const diffMinutes = Math.floor(diffMs / (1000 * 60));
   const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
   const diffDays = Math.floor(diffHours / 24);
 
   if (diffDays > 0) {
-    return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} - ${diffHours % 24} ${diffHours % 24 === 1 ? 'hour' : 'hours'} ago`;
+    return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} ${diffHours % 24 > 0 ? `and ${diffHours % 24} ${diffHours % 24 === 1 ? 'hour' : 'hours'} ago` : ''}`;
   } else if (diffHours > 0) {
-    return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} - ${diffMinutes % 60} ${diffMinutes % 60 === 1 ? 'minute' : 'minutes'} ago`;
+    return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} ago`;
   } else {
-    return `${diffMinutes} ${diffMinutes === 1 ? 'minute' : 'minutes'} ago`;
+    return `${diffHours === 0 ? '1 hour' : '0 hours'} ago`;
   }
 }
 
@@ -37,8 +36,11 @@ function loadNews() {
   fetch("../data.json")
     .then((res) => res.json())
     .then((data) => {
+      const newsContainer = $('#news');
+      newsContainer.empty(); // Clear the existing news items
+
       for (let i = currentIndex; i < currentIndex + itemsPerPage; i++) {
-        $('#news').append(`
+        newsContainer.append(`
           <div class="news-container">
             <div class="time">${getTimeAgo(data[i].date, data[i].time)}</div>
             <div class="headline">${data[i].headline}</div>
@@ -55,16 +57,19 @@ function loadNews() {
     });
 }
 
-document.addEventListener('DOMContentLoaded', loadNews());
-// 监听 'DOMContentLoaded' 事件，当 DOM 完全加载后调用 getAPI 函数
-// Attaches an event listener to the 'DOMContentLoaded' event, which calls the getAPI function when the DOM is fully loaded
+document.addEventListener('DOMContentLoaded', loadNews);
 
 $('#seeMoreBtn').click(function() {
-  loadNews(currentIndex);
+  loadNews();
 });
 
 
-
+function saveInput() {
+  const inputField = document.getElementById('input-field');
+  const inputValue = inputField.value;
+  localStorage.setItem('inputValue', inputValue);
+  window.location.href = 'AI.html';
+}
 ////////////////////////////////////////////////////////////////////////////////////
 
 
