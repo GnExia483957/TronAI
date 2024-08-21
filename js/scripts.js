@@ -18,15 +18,18 @@ const currentDate = new Date();
 
 function getTimeAgo(newsDate, newsTime) {
   const newsDateTime = new Date(`${newsDate}T${newsTime}`);
-  const oneHour = 60 * 60 * 1000;
-  const diffHours = Math.floor(Math.abs((currentDate - newsDateTime) / oneHour));
+  const currentDateTime = new Date();
+  const diffMs = currentDateTime - newsDateTime;
+  const diffMinutes = Math.floor(diffMs / (1000 * 60));
+  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
   const diffDays = Math.floor(diffHours / 24);
-  const hoursAgo = diffHours % 24;
 
   if (diffDays > 0) {
-    return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} - ${hoursAgo} ${hoursAgo === 1 ? 'hour' : 'hours'} ago`;
+    return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} - ${diffHours % 24} ${diffHours % 24 === 1 ? 'hour' : 'hours'} ago`;
+  } else if (diffHours > 0) {
+    return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} - ${diffMinutes % 60} ${diffMinutes % 60 === 1 ? 'minute' : 'minutes'} ago`;
   } else {
-    return `${hoursAgo} ${hoursAgo === 1 ? 'hour' : 'hours'} ago`;
+    return `${diffMinutes} ${diffMinutes === 1 ? 'minute' : 'minutes'} ago`;
   }
 }
 
@@ -51,8 +54,6 @@ function loadNews() {
       $('#news').append('<p>Error loading data.</p>');
     });
 }
-
-
 
 document.addEventListener('DOMContentLoaded', loadNews());
 // 监听 'DOMContentLoaded' 事件，当 DOM 完全加载后调用 getAPI 函数
