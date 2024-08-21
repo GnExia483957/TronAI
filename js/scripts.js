@@ -1,18 +1,7 @@
-let currentIndex = 0;
-const itemsPerPage = 3;
-const currentDate = new Date().toISOString().slice(0, 10);
-
 let newDate = new Date();
 let currentMonth = newDate.getMonth() + 1; // Months are zero-indexed, so we add 1
 let currentDay = newDate.getDate();
 let currentYear = newDate.getFullYear();
-
-
-function getDaysDiff(newsDate) {
-  const oneDay = 24 * 60 * 60 * 1000;
-  const diffDays = Math.round(Math.abs((new Date(currentDate) - new Date(newsDate)) / oneDay));
-  return diffDays;
-}
 
 $('#news').append(`
   <div class="box-container">  
@@ -23,16 +12,32 @@ $('#news').append(`
   </div>
 `);
 
+let currentIndex = 0;
+const itemsPerPage = 3;
+const currentDate = new Date();
+
+function getTimeAgo(newsDate, newsTime) {
+  const newsDateTime = new Date(`${newsDate}T${newsTime}`);
+  const oneHour = 60 * 60 * 1000;
+  const diffHours = Math.floor(Math.abs((currentDate - newsDateTime) / oneHour));
+  const diffDays = Math.floor(diffHours / 24);
+  const hoursAgo = diffHours % 24;
+
+  if (diffDays > 0) {
+    return `${diffDays} 天 - ${hoursAgo} 小时前`;
+  } else {
+    return `${hoursAgo} 小时前`;
+  }
+}
 
 function loadNews() {
   fetch("../data.json")
     .then((res) => res.json())
     .then((data) => {
       for (let i = currentIndex; i < currentIndex + itemsPerPage; i++) {
-        
         $('#news').append(`
           <div class="news-container">
-            <div class="time">${getDaysDiff(data[i].date)} 天前</div>
+            <div class="time">${getTimeAgo(data[i].date, data[i].time)}</div>
             <div class="headline">${data[i].headline}</div>
             <div class="news">${data[i].subheadline}</div>
             <div id="news-link"><a href=${data[i].url} target="blank">Crypto News Link</a></div>
@@ -46,6 +51,8 @@ function loadNews() {
       $('#news').append('<p>Error loading data.</p>');
     });
 }
+
+
 
 document.addEventListener('DOMContentLoaded', loadNews());
 // 监听 'DOMContentLoaded' 事件，当 DOM 完全加载后调用 getAPI 函数
