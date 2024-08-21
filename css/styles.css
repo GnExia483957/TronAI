@@ -60,11 +60,11 @@ h1 {
 }
 
 .news-container {
-  min-width: 500px;
+  min-width: 450px;
   max-height: 8%;
   border-radius: 1rem;
   background-color: #1A1A1A;
-  padding: 30px;
+  padding: 10px 30px 10px 30px;
   font-size: 1rem;
   margin: 10px 0 10px 0;
 }
@@ -115,7 +115,7 @@ a:hover {
   border-radius: 20px;
   color: white;
   cursor: pointer;
-  font-size: 16px;
+  font-size: 10px;
   padding: 5px 20px;
   margin-top: 1rem;
 }
