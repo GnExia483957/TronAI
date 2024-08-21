@@ -24,9 +24,9 @@ function getTimeAgo(newsDate, newsTime) {
   const hoursAgo = diffHours % 24;
 
   if (diffDays > 0) {
-    return `${diffDays} days - ${hoursAgo} hours ago`;
+    return `${diffDays} ${diffDays === 1 ? 'day' : 'days'} - ${hoursAgo} ${hoursAgo === 1 ? 'hour' : 'hours'} ago`;
   } else {
-    return `${hoursAgo} hours ago`;
+    return `${hoursAgo} ${hoursAgo === 1 ? 'hour' : 'hours'} ago`;
   }
 }
 
