@@ -14,7 +14,7 @@
 
 .AI-Container {
     border-radius: 15px 15px 0px 0px;
-    padding: 2rem;
+    padding: 2rem 2rem 0 2rem;
     background: hsl(223, 100%, 91%);
     color: #202125;
 }
@@ -33,7 +33,6 @@
 }
 
 .AI-Search-Results {
-    background: white;
     padding: 0px 20px 0px 40px;
     color: black;
     line-height: 1.2;
