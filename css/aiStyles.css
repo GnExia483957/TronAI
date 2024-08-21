@@ -17,6 +17,7 @@
     padding: 2rem 2rem 0 2rem;
     background: hsl(223, 100%, 91%);
     color: #202125;
+    min-height:10vh;
 }
 
 #ai-text {
@@ -30,6 +31,7 @@
     padding-top: 20px;
     padding-left: 20px;
     color: black;
+    min-height: 15vh;
 }
 
 .AI-Search-Results {

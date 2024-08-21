@@ -30,6 +30,20 @@ loadingBtn.addEventListener('click', () => {
 });
 //////////////////////////////////////////////////////////////////////////////////////
 
+function clearAIDivs() {
+  const elementsToClear = document.querySelectorAll(`#ai-text`);
+  elementsToClear.forEach(element => {
+    element.textContent = '';
+  });
+}
+
+function clearSearchResultDiv() {
+  const elementsToClear = document.querySelectorAll(`.AI-Search-Results`);
+  elementsToClear.forEach(element => {
+    element.textContent = '';
+  });
+}
+
 function getValue() {
   // Get the input element
   // 获取输入元素
@@ -40,6 +54,8 @@ function getValue() {
   let value = input.value;
 
   if (value.trim() !== "") {
+    clearSearchResultDiv();
+    clearAIDivs();
     aiSearch(value);
   } else {
     errorInput();
