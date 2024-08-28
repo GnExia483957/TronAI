@@ -1,6 +1,7 @@
 let inputValue = localStorage.getItem('inputValue');
 const myInput = document.getElementById('myInput');
 let searchBtn = document.getElementById('toggleBtn');
+const loadingContainer = document.querySelector('.loading-container');
 
 if (inputValue && inputValue.trim() !== '') {
   window.addEventListener('load', function() {
@@ -42,16 +43,6 @@ const session = 'projects/1008121697399/locations/global/collections/default_col
 const spellCorrectionSpec = { mode: 'AUTO' };
 
 
-// AI Button
-const loadingBtn = document.getElementById('toggleBtn');
-// AI 按钮
-// 获取 ID 为 'toggleBtn' 的元素
-
-const loadingContainer = document.querySelector('.loading-container');
-const toggleButton = document.getElementById('toggleButton');
-
-const loadingIndicator = document.getElementById('loadingIndicator');
-// 获取 ID 为 'loadingIndicator' 的元素
 
 //////////////////////////////////////////////////////////////////////////////////////
 function clearAIDivs() {
