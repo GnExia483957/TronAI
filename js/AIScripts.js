@@ -1,17 +1,47 @@
-window.addEventListener('load', function() {
-  const inputValue = localStorage.getItem('inputValue');
-  if (inputValue) {
-    document.getElementById('myInput').value = inputValue;
-    loadingContainer.classList.toggle('visible');
+let inputValue = localStorage.getItem('inputValue');
+const myInput = document.getElementById('myInput');
+let searchBtn = document.getElementById('toggleBtn');
+
+if (inputValue && inputValue.trim() !== '') {
+  window.addEventListener('load', function() {
+    if (myInput) {
+      myInput.value = inputValue;
+      toggleLoading();
+      getValue(inputValue);
+    }
+  });
+}
+
+function toggleLoading() {
+  loadingContainer.classList.toggle('visible');
+}
+
+function getInputValue() {
+  const inputValue = myInput.value.trim();
+  if (inputValue !== '') {
     getValue(inputValue);
+  } else {
+    alert('Please enter some text in the input field.');
   }
+}
+
+searchBtn.addEventListener('click', () => {
+  console.log("this button is being clicked");
+  toggleLoading();
 });
 
+myInput.addEventListener('keydown', (event) => {
+  if (event.key === 'Enter') {
+    toggleLoading();
+    getInputValue();
+  }
+});
 const apiUrl = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:search';
-const authToken = 'Bearer ya29.c.c0ASRK0GbRLM0t0kjHCJqe-9OfUfjQ6CQAqgmXnJyzcn4lvAY19VI2wxi49acCTnOejNGLAW1J_UCTsY6ha-JGCBD81Q9HXDvDq07vIzy5knIw_XWJnP-517YNoETijSzz5G7hFK_iXwvNltVzKfwgheo8oXHHNE7Hz6Wb0R2AVS9n2bvLHu5E_Imre1PT471d8KnZ3wLGJyMPpVri5muz0KEIZNNa8V5-fJkqgObMG3MiHK3RU39W3rhl7eVwi2iH2N9n30BTKNjBNLg0Xs20j2TI3thJzJnPc-cLEJXSapVswxan_Z8cO0aumVKjjaym9P0a6PGGZLfI93boPjEuDOEiJqKkw0L7XbtqY1IiX9Q8qWVqFwBW3_-T8YDusVsv4hWGRPM3qYigILiq4IopXqZonYVY70yvVBD2AbexaBpO-hU5kib9zPflYUC3qdchH3lwmmkYxGMPyysIruHJaRv0MtIr9tyBLJtJa1PDkV0gfL3LCXnMeWUAJJcHqmVc7tfKZJY6Ws1jhep-VCgBT6vWPbdaXkLGVHHmf8QBqi9ScjddzOTK52vKVgfE3HDPxuAcRXPoYGmkOpJ079ipvtUQC5aQLb1k-kYPFrRgs4b0_Jffn8oMUKOGgulRL645DYuemwWgq9_5aFikXSy6lIipns44Fg5XzpIbpY3bjgFkeldQjQ89YWZ7coIMmYkyfpBgpgJO0wSxgRcSS20ulq99zbxyWOXMbI-f_sIQ7XWySXipweUFI_jV9RQMzeagkUMvdF1FfX7lcBQqg9mOVgZrm52JQcqU7746M45BQbh1MVeF_n3Z779MxrX4FmslUQdu18U7QFs5U5OeVgfo5labf1p-QOn5wk-_3S1l6_hhbBnvsxYW_oSk9v2y8kbV7IpfbIbgR1Y1VdZgp973kRjbW25ZmuvXJvjXfb5ZiXxid9RmIFZxxvtlaW4ulXF8ngh33WzIXImsF4r2n3BU13dhi3xiJgJpkSJ_5Z5O4kS0c9hqiIBM7OZ';
+const authToken = 'Bearer ya29.a0AcM612zxzl7oDcf4ImMbyhDRYRHYhlzG-njEXS13JNfSeDQtVGDYQtgMXGTnsWTSP0v4wAGxm4qnXZvn7ne_LmZHdxa8qGiyyM4lE27GDM55LY_pNIu6wdhrVCYjzDN2qtYObDAcE4-tF7eyfwIH3ebJawKKtohgONvAR0ci_BPevQaCgYKAZcSARASFQHGX2MiHLwd2dK0_WUpbMHh1Vq8Gw0181';
 const pageSize = 3;
 const session = 'projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/sessions/-';
 const spellCorrectionSpec = { mode: 'AUTO' };
+
 
 // AI Button
 const loadingBtn = document.getElementById('toggleBtn');
@@ -24,13 +54,9 @@ const toggleButton = document.getElementById('toggleButton');
 const loadingIndicator = document.getElementById('loadingIndicator');
 // 获取 ID 为 'loadingIndicator' 的元素
 
-// Add a click event listener to the button
-loadingBtn.addEventListener('click', () => {
-  loadingContainer.classList.toggle('visible');
-});
 //////////////////////////////////////////////////////////////////////////////////////
 function clearAIDivs() {
-  const elementsToClear = document.querySelectorAll('#ai-text, .AI-Search-Results');
+  const elementsToClear = document.querySelectorAll('.output, .result-container');
   elementsToClear.forEach(element => {
     element.textContent = '';
   });
@@ -55,7 +81,8 @@ function getValue() {
 
 function errorInput(){
   console.log("There is no input");
-  }
+  toggleLoading();
+}
 
 function aiSearch(query) {
   // Make the fetch request
@@ -110,7 +137,7 @@ function appendSearchResults(data) {
     for (let i = 0; i < pageSize; i++) {
       $('#reference-header').append(`
         <div class="AI-Search-Results">
-        <a href="${data.results[i].document.derivedStructData.link}">
+        <a id="search-link" href="${data.results[i].document.derivedStructData.link}">
           <div id="results-link">${data.results[i].document.derivedStructData.link}</div>
           <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
           <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div>
@@ -159,15 +186,13 @@ function appendSearchResults(data) {
   .then(response => response.json())
   .then(data => {
     let output = data.answer.answerText;
-      // Handle the response data
-      //loadingContainer.remove();
-      loadingContainer.classList.toggle('visible');
-
       appendText(output);
       appendSearchResults(initialData);
-  })
+      toggleLoading();
+    })
   .catch(error => {
       // Handle any errors
+      toggleLoading();
       console.error(error);
   });
 }

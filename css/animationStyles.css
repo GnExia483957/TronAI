@@ -1,12 +1,19 @@
-.loading-container {
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+
+
+.outer-loading-container {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  visibility: hidden;
-  opacity: 0;
+  width: 100%;
+}
+
+.loading-container {
+  min-width: 70%;
   transition: visibility 0.1s, opacity 0.1s;
   padding-bottom: 10px;
+  visibility: hidden;
+  opacity: 0;
 }
 
 .loading-container.visible {
@@ -18,17 +25,46 @@
   color: white;
   margin-bottom: 10px;
   align-self: start;
-  padding-left: 10rem;
+  font-size: 1rem;
+  font-family: 'Roboto', sans-serif;
 }
 
 .loading-box {
   width: 100%;
-  max-width: 70%;
   height: 10px;
   border-radius: 10px;
   background-color: #ddd;
   position: relative;
   overflow: hidden;
+}
+
+/* Responsive Styles */
+@media (max-width: 768px) {
+  .loading-container {
+    min-width: 100%;
+  }
+
+  .loading-text {
+    font-size: 0.9rem;
+  }
+
+  .loading-box {
+    height: 8px;
+  }
+}
+
+@media (max-width: 480px) {
+  .loading-container {
+    min-width: 100%;    
+  }
+
+  .loading-text {
+    font-size: 0.8rem;
+  }
+
+  .loading-box {
+    height: 6px;
+  }
 }
 
 .loading-box:before {
@@ -54,18 +90,16 @@
   .loading-box {
     height: 15px;
   }
+}
 
-  .loading-text {
-    padding-left: 5rem;
+@media (max-width: 768px) {
+  .outer-loading-container {
+    max-width: 100%;
   }
 }
 
 @media (max-width: 480px) {
   .loading-box {
-    max-width: 90%;
-  }
-
-  .loading-text {
-    padding-left: 2rem;
+    max-width: 100%;
   }
 }

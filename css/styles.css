@@ -1,9 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Google+Sans:wght@400;500;700&display=swap');
+
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px #0f0f0f inset !important;
+    -webkit-text-fill-color: #ffffff !important;
+}
+
 /* Add your custom CSS styles here */
 body {
-  background-repeat: no-repeat;
   background-image: linear-gradient(#8E0000, black 30%);
   min-height: 100vh;
   width: auto;
+  margin: 0;
 }
 
 .outer-container {
@@ -16,61 +26,70 @@ body {
   color: white;
 }
 
-h1 {
+#Top-title{
   display: flex;
   flex-direction: column;
   justify-content: center;
   color: white;
   align-items: center;
+  margin: 0;
+  margin-bottom: 10px;
+  font-family: 'Roboto', sans-serif;
+  font-size: 1.5rem;
+  font-weight: 700;
 }
 
 .box-container {
   display: flex;
-  align-self: center;
-  padding: 10px 0 10px 125px;
+  align-self: start;
 }
 
 .rounded-box {
-  width: 100px;
-  height: 60px;
-  background: linear-gradient(to bottom, #a70000 50%, #610000 50%);
-  border-radius: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
+  width: 100px;
+  height: 50px;
+  background: linear-gradient(to bottom, #a70000 50%, #610000 50%);
+  border-radius: 10px;
   color: #ffffff;
   font-weight: bold;
-  position: relative;
   border: 1px solid #ffffff;
+  font-family: 'Roboto', sans-serif;
 }
 
 .month-year {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
 
 .year {
-  font-size: 1rem;
+  font-size: 0.9rem;
 }
+
 
 #news {
   display: flex;
   flex-direction: column;
   align-items: center;
+  min-height: 420px;
+  max-height: 420px;
+  margin: 0;
 }
 
 .news-container {
+  min-height: 40px;
+  max-height: 15%;
   min-width: 450px;
-  max-height: 8%;
   border-radius: 1rem;
   background-color: #1A1A1A;
-  padding: 15px 30px 15px 30px;
-  font-size: 1rem;
-  margin: 10px 0 10px 0;
+  padding: 10px 30px 20px 30px;
+  margin: 0 0 10px 0;
+  font-family: 'Google Sans', sans-serif;
 }
 
 .time {
-  font-size: .8rem;
+  font-size: 1rem;
   color: #aeaeae;
 }
 
@@ -78,7 +97,7 @@ h1 {
   padding-top: 5px;
   padding-left: 15px;
   font-weight: 900;
-  font-size: .8rem;
+  font-size: 0.8rem;
   color: white;
 }
 
@@ -87,10 +106,10 @@ h1 {
   padding-bottom: 5px;
   padding-left: 15px;
   color: #aeaeae;
-  font-size: .9rem;
+  font-size: 0.9rem;
 }
 
-a {
+#news-link a {
   color: #aeaeae;
   padding-left: 15px;
   text-decoration: none;
@@ -107,6 +126,7 @@ a:hover {
 .see-more {
   display: flex;
   justify-content: center;
+  font-family: 'Roboto', sans-serif;
 }
 
 .see-more button {
@@ -115,16 +135,17 @@ a:hover {
   border-radius: 20px;
   color: white;
   cursor: pointer;
-  font-size: 10px;
+  font-size: 13px;
   padding: 5px 20px;
-  margin-top: 1rem;
+  margin-bottom: 4.2em;
 }
 
 .search-container {
-  margin: 1.3vh;
   border-radius: 1.1rem;
   background-color: #1A1A1A;
-  padding: 1%;
+  padding: 3px;
+  margin-top: 5px;
+  margin-bottom: 10px;
 }
 
 .inner-search {
@@ -132,7 +153,7 @@ a:hover {
   border-radius: 2rem;
   display: flex;
   align-items: center;
-  padding: 10px;
+  padding: 3px 10px;
 }
 
 .inner-search input {
@@ -157,7 +178,7 @@ input[type=text] {
   border-radius: 20px;
   color: white;
   cursor: pointer;
-  padding: 5px 20px;
+  padding: 2px 20px;
 }
 
 .output {
@@ -168,19 +189,47 @@ input[type=text] {
   visibility: hidden;
 }
 
+
+
 /* Responsive Styles */
 @media (max-width: 768px) {
+  .rounded-box {
+    width: 80px;
+    height: 45px;
+  }
+
+  #Top-title{
+    margin: 0;
+  }
+
+  .month-year,
+  .year {
+    font-size: 0.8rem;
+  }
+
+  .news-container {
+    padding: 10px 20px 15px 20px;
+    margin: 0 0 15px;
+  }
+
+  .time {
+    font-size: 0.9rem;
+  }
+
+  .headline {
+    font-size: 0.7rem;
+  }
+
+  .news {
+    font-size: 0.8rem;
+  }
+
   .outer-container {
     padding: 0 10px;
   }
 
   .box-container {
-    padding: 10px 0 10px 20px;
-  }
-
-  .rounded-box {
-    width: 80px;
-    height: 50px;
+    padding: 10px 0 10px 0px;
   }
 
   .news-container {
@@ -188,23 +237,13 @@ input[type=text] {
     padding: 20px;
   }
 
-  .headline {
-    font-size: 1rem;
-  }
-
+  .headline,
   .news {
-    font-size: 0.9rem;
+    font-size: 1rem, 0.9rem;
   }
 
-  .see-more button {
-    font-size: 14px;
-    padding: 5px 15px;
-  }
-
-  .inner-search input {
-    font-size: 16px;
-  }
-
+  .see-more button,
+  .inner-search input,
   .inner-search button {
     font-size: 14px;
     padding: 5px 15px;
@@ -212,8 +251,38 @@ input[type=text] {
 }
 
 @media (max-width: 480px) {
+  .rounded-box {
+    width: 70px;
+    height: 40px;
+  }
+
+  .month-year,
+  .year {
+    font-size: 0.7rem;
+  }
+
+  .news-container {
+    min-width: 80vw;
+    max-height: none;
+    padding: 15px;
+    font-size: 0.8rem;
+
+  }
+
+  .time {
+    font-size: 0.7rem;
+  }
+
+  .headline {
+    font-size: 0.6rem;
+  }
+
+  .news {
+    font-size: 0.7rem;
+  }
+
   .box-container {
-    padding: 10px 0 10px 10px;
+    padding: 10px 0 10px 0px;
   }
 
   .rounded-box {
@@ -221,29 +290,60 @@ input[type=text] {
     height: 45px;
   }
 
-  .news-container {
-    padding: 15px;
-  }
-
   .headline {
     font-size: 0.9rem;
   }
 
   .news {
-    font-size: 0.8rem;
+    font-size: 0.8rem;  
   }
 
-  .see-more button {
-    font-size: 12px;
-    padding: 5px 12px;
+  .search-container {
+    margin-top: 0px;
   }
 
-  .inner-search input {
-    font-size: 14px;
-  }
-
+  .see-more button,
+  .inner-search input,
   .inner-search button {
     font-size: 12px;
-    padding: 5px 12px;
+  }
+}
+
+@media (max-width: 320px) {
+  .rounded-box {
+    width: 60px;
+    height: 35px;
+  }
+
+  .month-year,
+  .year {
+    font-size: 0.6rem;
+  }
+
+  .news-container {
+    padding: 10px;
+  }
+
+  .time {
+    font-size: 0.3rem;
+  }
+
+  .headline {
+    font-size: 0.3rem;
+  }
+
+  .news {
+    font-size: 0.1rem;
+  }
+
+  .box-container {
+    padding: 8px 0 8px 0px;
+  }
+
+  .see-more button,
+  .inner-search input,
+  .inner-search button {
+    font-size: 8px;
+    padding: 4px 10px;  
   }
 }
