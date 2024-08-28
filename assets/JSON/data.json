@@ -1,5 +1,84 @@
 [
   {
+    "headline": "Tron Blockchain Introduces New Privacy Features for Transactions",
+    "subheadline": "USDT to be Used for Enhanced Security in Payments",
+    "date": "2024-08-28",
+    "time": "21:00",
+    "category": "Technology",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron-Powered E-Learning Platform Expands with USDT Payment Options",
+    "subheadline": "Students Can Now Pay for Courses Using Cryptocurrency",
+    "date": "2024-08-28",
+    "time": "19:15",
+    "category": "Education",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron Blockchain Facilitates Sustainable Energy Trading with USDT",
+    "subheadline": "Users Can Buy and Sell Renewable Energy Credits",
+    "date": "2024-08-28",
+    "time": "17:30",
+    "category": "Energy",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron-Based Gaming Platform Launches with USDT Rewards",
+    "subheadline": "Players Can Earn Cryptocurrency While Playing",
+    "date": "2024-08-28",
+    "time": "15:45",
+    "category": "Gaming",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron Blockchain Integration Streamlines Supply Chain Management",
+    "subheadline": "USDT to be Used for Real-Time Payments",
+    "date": "2024-08-28",
+    "time": "14:00",
+    "category": "Business",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron-Powered Ride-Sharing App Introduces USDT Payments",
+    "subheadline": "Users Can Pay for Rides Using Cryptocurrency",
+    "date": "2024-08-28",
+    "time": "12:30",
+    "category": "Transportation",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron Blockchain Empowers Local Farmers with Direct Sales in USDT",
+    "subheadline": "Consumers Can Buy Fresh Produce Using Cryptocurrency",
+    "date": "2024-08-28",
+    "time": "10:45",
+    "category": "Agriculture",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron-Based Charity Platform Launches with USDT Donations",
+    "subheadline": "Transparency and Efficiency in Fund Allocation",
+    "date": "2024-08-28",
+    "time": "09:00",
+    "category": "Charity",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron Blockchain Revolutionizes Freelance Payments with USDT",
+    "subheadline": "Freelancers Can Receive Payments Quickly and Securely",
+    "date": "2024-08-28",
+    "time": "08:15",
+    "category": "Finance",
+    "link": "about:blank"
+  },
+  {
+    "headline": "Tron Integration in Online Marketplaces Allows for USDT Transactions",
+    "subheadline": "Merchants Can Accept Cryptocurrency Payments Easily",
+    "date": "2024-08-28",
+    "time": "07:30",
+    "category": "E-commerce",
+    "link": "about:blank"
+  },{
     "headline": "Tron Blockchain Integrated into New Virtual Reality Social Platform",
     "subheadline": "USDT to be Used for In-World Transactions and Micropayments",
     "date": "2024-08-22",
@@ -77,86 +156,6 @@
     "date": "2024-08-21",
     "time": "00:05",
     "category": "Business",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Justin Sun Announces TRX Integration into Popular Battle Royale Title",
-    "subheadline": "USDT to be Used for Microtransactions",
-    "date": "2024-08-20",
-    "time": "16:42",
-    "category": "Gaming",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Justin Sun Reveals Plans to Integrate Tron into Massive Multiplayer Online Role-Playing Game",
-    "subheadline": "USDT to be Accepted for Character Customization and Progression",
-    "date": "2024-08-20",
-    "time": "12:05",
-    "category": "Gaming",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Tron Blockchain Integrated into New Mobile Game",
-    "subheadline": "USDT Accepted for In-Game Purchases",
-    "date": "2024-08-20",
-    "time": "09:25",
-    "category": "Technology",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Tron Blockchain Powering Cross-Platform In-Game Purchases and Rewards",
-    "subheadline": "USDT to be Used Across Multiple Game Titles",
-    "date": "2024-08-19",
-    "time": "17:22",
-    "category": "Technology",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Tron Blockchain Enabling Cryptocurrency Rewards in Casual Mobile Games",
-    "subheadline": "USDT to be Earned and Spent In-Game",
-    "date": "2024-08-19",
-    "time": "15:41",
-    "category": "Mobile",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Justin Sun Announces Tron Integration into Highly Anticipated Open-World Adventure Game",
-    "subheadline": "USDT to be Integrated for Microtransactions and In-Game Economy",
-    "date": "2024-08-19",
-    "time": "13:54",
-    "category": "Gaming",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Justin Sun Announces Tron Integration into Esports Tournaments",
-    "subheadline": "USDT to be Used for Prize Pools and Sponsorships",
-    "date": "2024-08-19",
-    "time": "11:37",
-    "category": "Esports",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Tron Blockchain Adopted by Major VR Game Developer",
-    "subheadline": "USDT to be Integrated for In-Game Transactions",
-    "date": "2024-08-18",
-    "time": "14:53",
-    "category": "Technology",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Tron Blockchain Powering Cryptocurrency-Based Virtual World",
-    "subheadline": "USDT Accepted as In-Game Currency",
-    "date": "2024-08-18",
-    "time": "13:09",
-    "category": "Technology",
-    "link": "about:blank"
-  },
-  {
-    "headline": "Justin Sun Unveils Plans to Integrate Tron into Esports Tournaments",
-    "subheadline": "USDT to be Used for Prize Pools and Sponsorships",
-    "date": "2024-08-18",
-    "time": "09:28",
-    "category": "Esports",
     "link": "about:blank"
   }
 ]
