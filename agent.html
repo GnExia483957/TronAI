@@ -8,6 +8,7 @@
   <link rel="stylesheet" href="./css/navBarStyles.css"></link>
   <link rel="stylesheet" href="./css/navBar2styles.css"></link>
   <link rel="stylesheet" href="./css/styles.css"></link>
+  <link rel="stylesheet" href="./css/agentStyles.css"></link>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
   <meta name="google-site-verification" content="xkRgVwV157QjXRZdOfvYwZ2f75Dd8Bx7zu_7t3MTpnQ" />
   <meta name="theme-color" content="#8E0000"/>
@@ -68,10 +69,21 @@
             Agent
           </a>
         </div>
-  
       </div>
 
-    
+    <div class="chatbot-container">
+        <div class="chatbot" id="chatbot">
+            <div class="title">Assistant</div>
+            <div id="messages">
+                <div class="message" id="message"></div>
+            </div>
+            <div class="input-container">
+                <input type="text" id="userInput" placeholder="Type your message...">
+                <button id="sendButton">Send</button>
+            </div>
+            
+        </div>
+            
   </div>
 
     <!-- Widget JavaScript bundle -->
@@ -83,7 +95,6 @@
   </gen-search-widget> -->
   <!-- Element that opens the widget on click. It does not have to be an input -->
   <!-- <input placeholder="Search here" id="searchWidgetTrigger" /> -->
-  <script src="./js/scripts.js"> </script>  
   <script src="./js/agentScripts.js"> </script>
   
 </body>
