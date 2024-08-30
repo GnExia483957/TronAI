@@ -19,13 +19,6 @@ function saveInput() {
   }
 }
 
-//clears the local storage if AI link is pressed
-document.getElementById('AILink').addEventListener('click', function(event) {
-  event.preventDefault();
-  localStorage.removeItem('inputValue');
-  window.location.href = 'AI.html';
-});
-
 ////////////////////////////////////////////////////////////////////////////////////
 
 

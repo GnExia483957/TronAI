@@ -1,3 +1,10 @@
+let newDate = new Date();
+let currentMonthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(newDate);
+let currentDayNumber = newDate.getDate();
+let currentDay;
+
+console.log(newDate);
+
 window.onload = function() {
     document.getElementById('message').innerText = "Dear Tron user, what can I help you with?";
 };
@@ -46,9 +53,14 @@ function sendMessage() {
                 index++;
             } else {
                 clearInterval(typingInterval);
+                // Scroll to the bottom after the bot response is complete
+                messagesDiv.scrollTop = messagesDiv.scrollHeight;
             }
-        }, 30); // Adjust typing speed here (100ms per character)
+        }, 30); // Adjust typing speed here (30ms per character)
     }
+
+    // Always scroll to the bottom after adding a new message
+    messagesDiv.scrollTop = messagesDiv.scrollHeight;
 }
 
 // Send message on button click
@@ -62,10 +74,3 @@ document.getElementById('userInput').addEventListener('keypress', function(event
     }
 });
 
-
-//clears the local storage if AI link is pressed
-document.getElementById('AILink').addEventListener('click', function(event) {
-    event.preventDefault();
-    localStorage.removeItem('inputValue');
-    window.location.href = 'AI.html';
-  });
