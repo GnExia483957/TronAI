@@ -37,7 +37,7 @@ myInput.addEventListener('keydown', (event) => {
   }
 });
 const apiUrl = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:search';
-const authToken = 'Bearer ya29.a0AcM612zDqT-djCZFxJcRK8EeE2EoLvJbUXaYtO5wRRKusXZoelpKA0hExvXMzdIs2R7WEcjjxTZ5A47e_J6tEyw7znQxpbeEKjie3Siw9WwL_oyQ9FYf2AoQuQyodBtkmkB8O_PLjwKeJ-aYa7TbmOCGjVkZfp7U6NPyOAlsmW-6TWoaCgYKARMSARASFQHGX2MiGENdAtsuqf2g8xtgxh1qzw0182';
+const authToken = 'Bearer ya29.a0AcM612z1fm7kW-cmZsJWX2wJXNQNF2uuou7UtiLdReGE5r3htXhbF_Vu7sQHEuc7iDMhgc3FRhC3mqG28V_bGr_-AyCKj1syK3d7KPutBuMYXg55Y7tugQKfSCkrpzzQS4tkufBiRpDtzRqFam3SAN1kbSD6qELEUgdANqXXEr8CWiEaCgYKARASARASFQHGX2MiA-D3xJLZvWE1nzGtsvMsxw0182';
 const pageSize = 3;
 const session = 'projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/sessions/-';
 const spellCorrectionSpec = { mode: 'AUTO' };
