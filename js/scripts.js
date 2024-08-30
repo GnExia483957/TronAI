@@ -38,21 +38,21 @@ let currentIndex = 0;
 const itemsPerPage = 3;
 const currentDate = new Date();
 
-function getTimeAgo(newsDate, newsTime) {
-  const newsDateTime = new Date(`${newsDate}T${newsTime}`);
-  const currentDateTime = new Date();
-  const diffMs = currentDateTime - newsDateTime;
-  const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
-  const diffDays = Math.floor(diffHours / 24);
+// function getTimeAgo(newsDate, newsTime) {
+//   const newsDateTime = new Date(`${newsDate}T${newsTime}`);
+//   const currentDateTime = new Date();
+//   const diffMs = currentDateTime - newsDateTime;
+//   const diffHours = Math.floor(diffMs / (1000 * 60 * 60));
+//   const diffDays = Math.floor(diffHours / 24);
 
-  if (diffDays > 0) {
-    return `${diffDays} ${diffDays === 1 ? 'day ago' : 'days'} ${diffHours % 24 > 0 ? `and ${diffHours % 24} ${diffHours % 24 === 1 ? 'hour' : 'hours'} ago` : ''}`;
-  } else if (diffHours > 0) {
-    return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} ago`;
-  } else {
-    return `1 hour ago`;
-  }
-}
+//   if (diffDays > 0) {
+//     return `${diffDays} ${diffDays === 1 ? 'day ago' : 'days'} ${diffHours % 24 > 0 ? `and ${diffHours % 24} ${diffHours % 24 === 1 ? 'hour' : 'hours'} ago` : ''}`;
+//   } else if (diffHours > 0) {
+//     return `${diffHours} ${diffHours === 1 ? 'hour' : 'hours'} ago`;
+//   } else {
+//     return `1 hour ago`;
+//   }
+// }
 
 function loadNews() {
   fetch("../assets/JSON/data.json")
@@ -65,11 +65,12 @@ function loadNews() {
         for (let i = currentIndex; i < Math.min(currentIndex + itemsPerPage, data.length); i++) {
           newsContainer.append(`
             <div class="news-container">
-              <div class="time">${getTimeAgo(data[i].date, data[i].time)}</div>
+              <div class="time">${data[i].time}</div>
               <div class="headline">${data[i].headline}</div>
               <div class="news">${data[i].subheadline}</div>
               <div id="news-link"><a href=https://coinmarketcap.com/ target="blank">Crypto News Link</a></div>
             </div>
+
           `);
         }
         currentIndex += itemsPerPage;
@@ -138,5 +139,15 @@ function saveInput() {
 
 // console.log("Filtered Sentences:");
 // console.log(filteredSentences);
+
+
+{/* <div class="news-container">
+  <div class="time">${getTimeAgo(data[i].date, data[i].time)}</div>
+  <div class="headline">${data[i].headline}</div>
+  <div class="news">${data[i].subheadline}</div>
+  <div id="news-link"><a href=https://coinmarketcap.com/ target="blank">Crypto News Link</a></div>
+</div> */}
+
+
 ///////////////////////////////////////////////////////////////////////////
 
