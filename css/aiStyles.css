@@ -17,7 +17,7 @@
 .AI-Container {
     border-radius: 15px 15px 0px 0px;
     padding: 2rem 2rem 0 2rem;
-    background: hsl(223, 100%, 91%);
+    background: #d1deff;
     color: #202125;
     min-height:10vh;
     font-family: 'Roboto', sans-serif;

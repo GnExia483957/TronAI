@@ -189,6 +189,12 @@ input[type=text] {
   visibility: hidden;
 }
 
+.search-index-container{
+  max-width:500px;
+  margin: 30vh auto;
+  align-items: flex-end;
+}
+
 
 
 /* Responsive Styles */

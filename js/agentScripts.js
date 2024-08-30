@@ -3,7 +3,7 @@ let currentMonthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).forma
 let currentDayNumber = newDate.getDate();
 let currentDay;
 
-console.log(newDate);
+// console.log(newDate);
 
 window.onload = function() {
     document.getElementById('message').innerText = "Dear Tron user, what can I help you with?";

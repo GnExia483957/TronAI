@@ -28,8 +28,10 @@ nav .logo #nav-title #title {
 nav ul {
   list-style: none;
   display: flex;
+  flex-direction: row;
 }
 nav ul li {
+  align-items: end;
   margin-left: 1.5rem;
 }
 nav ul li a {
