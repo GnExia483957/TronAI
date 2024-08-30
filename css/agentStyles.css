@@ -2,6 +2,7 @@
     font-family: Arial, sans-serif;
     justify-content: center;
     margin: 0;
+    padding: 10px; /* Added padding for better spacing on small screens */
 }
 
 .chatbot {
@@ -16,10 +17,11 @@
 .title {
     font-weight: bold;
     text-align: left;
+    margin-bottom: 5px;
 }
 
 .message {
-    margin: 0px 0 10px 0;
+    margin: 0px 0 10px;
     padding: 10px;
     border-radius: 5px;
     background-color: #e1f5fe;
@@ -31,7 +33,6 @@
     border-radius: 5px;
     background-color: #d1c4e9; /* User message color */
     text-align: right; /* Align text to the right */
-
 }
 
 .input-container {
@@ -55,4 +56,51 @@ button {
     background-color: #d40000; /* Red button color */
     color: white;
     cursor: pointer;
+}
+
+/* Responsive Design */
+@media (max-width: 600px) { /* Mobile (portrait) */
+    .chatbot {
+        padding: 15px;
+    }
+
+    input[type="text"] {
+        padding: 8px;
+    }
+
+    button {
+        padding: 8px;
+    }
+}
+
+@media (min-width: 601px) and (max-width: 900px) { /* Tablet */
+    .chatbot {
+        padding: 20px;
+    }
+
+    input[type="text"] {
+        padding: 10px;
+    }
+
+    button {
+        padding: 10px;
+    }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) { /* Small Desktop */
+    .chatbot {
+        padding: 20px;
+    }
+}
+
+@media (min-width: 1201px) and (max-width: 1600px) { /* Medium Desktop */
+    .chatbot {
+        padding: 25px;
+    }
+}
+
+@media (min-width: 1601px) { /* Large Desktop */
+    .chatbot {
+        padding: 30px;
+    }
 }

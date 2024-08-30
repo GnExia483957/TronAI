@@ -47,7 +47,7 @@ function sendMessage() {
             } else {
                 clearInterval(typingInterval);
             }
-        }, 50); // Adjust typing speed here (100ms per character)
+        }, 30); // Adjust typing speed here (100ms per character)
     }
 }
 
@@ -61,3 +61,11 @@ document.getElementById('userInput').addEventListener('keypress', function(event
         event.preventDefault(); // Prevent form submission if inside a form
     }
 });
+
+
+//clears the local storage if AI link is pressed
+document.getElementById('AILink').addEventListener('click', function(event) {
+    event.preventDefault();
+    localStorage.removeItem('inputValue');
+    window.location.href = 'AI.html';
+  });
