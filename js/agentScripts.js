@@ -1,76 +1,89 @@
-let newDate = new Date();
-let currentMonthName = new Intl.DateTimeFormat('en-US', { month: 'long' }).format(newDate);
-let currentDayNumber = newDate.getDate();
-let currentDay;
-
-// console.log(newDate);
+const chatContainer = document.getElementById('chatContainer');
+const userInput = document.getElementById('userInput');
+const sendButton = document.getElementById('sendButton');
 
 window.onload = function() {
-    document.getElementById('message').innerText = "Dear Tron user, what can I help you with?";
+    appendMessage('bot', 'Dear Tron user, how can I help?');
 };
 
-// Function to handle sending messages
-function sendMessage() {
-    const userInput = document.getElementById('userInput').value;
-    const messagesDiv = document.getElementById('messages');
-
-    // Check if user input is empty
-    if (userInput.trim() === '') {
-        const botResponseDiv = document.createElement('div');
-        botResponseDiv.className = 'message';
-        botResponseDiv.innerHTML = `
-            <div class="title">Assistant</div>
-            <div>Please enter something so we have something to talk about.</div>
-        `;
-        messagesDiv.appendChild(botResponseDiv);
-    } else {
-        // User message
-        const userMessageDiv = document.createElement('div');
-        userMessageDiv.className = 'user-message';
-        userMessageDiv.innerText = `You: ${userInput}`;
-        messagesDiv.appendChild(userMessageDiv);
-
-        // Bot response with typing effect
-        const botResponseDiv = document.createElement('div');
-        botResponseDiv.className = 'message';
-        botResponseDiv.innerHTML = `
-            <div class="title">Assistant</div>
-            <div class="bot-response"></div>
-        `;
-        messagesDiv.appendChild(botResponseDiv);
-
-        // Clear input field
-        document.getElementById('userInput').value = '';
-
-        // Simulate typing effect
-        const responseText = "I don't know";
-        let index = 0;
-        const botResponseElement = botResponseDiv.querySelector('.bot-response');
-
-        const typingInterval = setInterval(() => {
-            if (index < responseText.length) {
-                botResponseElement.innerHTML += responseText.charAt(index);
-                index++;
-            } else {
-                clearInterval(typingInterval);
-                // Scroll to the bottom after the bot response is complete
-                messagesDiv.scrollTop = messagesDiv.scrollHeight;
-            }
-        }, 30); // Adjust typing speed here (30ms per character)
-    }
-
-    // Always scroll to the bottom after adding a new message
-    messagesDiv.scrollTop = messagesDiv.scrollHeight;
-}
-
-// Send message on button click
-document.getElementById('sendButton').onclick = sendMessage;
-
-// Send message on Enter key press
-document.getElementById('userInput').addEventListener('keypress', function(event) {
-    if (event.key === 'Enter') {
+sendButton.addEventListener('click', sendMessage);
+userInput.addEventListener('keypress', function (e) {
+    if (e.key === 'Enter') {
         sendMessage();
-        event.preventDefault(); // Prevent form submission if inside a form
     }
 });
 
+function sendMessage() {
+    const messageText = userInput.value.trim();
+    if (messageText === '') return;
+
+    appendMessage('user', messageText);
+    userInput.value = '';
+
+    // Simulate bot typing response
+    setTimeout(() => {
+        typeOutMessage("I'm here to help!", 'bot');
+    }, 1000);
+}
+
+function typeOutMessage(text, sender) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', sender);
+    
+    const title = document.createElement('div');
+    title.classList.add('title');
+    title.textContent = sender === 'user' ? 'You' : 'Assistant';
+
+    const messageBox = document.createElement('div');
+    messageBox.classList.add('message-box');
+
+    const timestamp = document.createElement('div');
+    timestamp.classList.add('timestamp');
+
+    messageDiv.appendChild(title);
+    messageDiv.appendChild(messageBox);
+    messageDiv.appendChild(timestamp);
+    chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+
+    let index = 0;
+    function typeCharacter() {
+        if (index < text.length) {
+            messageBox.textContent += text.charAt(index);
+            index++;
+            setTimeout(typeCharacter, 50); // Adjust typing speed here
+        } else {
+            timestamp.textContent = getCurrentTime(); // Set timestamp after typing
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+        }
+    }
+    typeCharacter();
+}
+
+function appendMessage(sender, text) {
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', sender);
+    
+    const title = document.createElement('div');
+    title.classList.add('title');
+    title.textContent = sender === 'user' ? 'You' : 'Assistant';
+
+    const messageBox = document.createElement('div');
+    messageBox.classList.add('message-box');
+    messageBox.textContent = text;
+
+    const timestamp = document.createElement('div');
+    timestamp.classList.add('timestamp');
+    timestamp.textContent = getCurrentTime(); // Set timestamp for user message
+
+    messageDiv.appendChild(title);
+    messageDiv.appendChild(messageBox);
+    messageDiv.appendChild(timestamp);
+    chatContainer.appendChild(messageDiv);
+    chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+}
+
+function getCurrentTime() {
+    const now = new Date();
+    return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
+}
