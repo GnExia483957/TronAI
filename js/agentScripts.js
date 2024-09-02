@@ -3,27 +3,39 @@ const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 
 window.onload = function() {
-    appendMessage('bot', 'Hello Tron user, how can I help?');
+    appendMessage('bot', 'Dear Tron user, how can I help?');
 };
 
 sendButton.addEventListener('click', sendMessage);
+let enterKeyDisabled = false;
+
 userInput.addEventListener('keypress', function (e) {
-    if (e.key === 'Enter') {
+    if (e.key === 'Enter' && !enterKeyDisabled) {
         sendMessage();
+        enterKeyDisabled = true; // Disable further input
+        setTimeout(() => {
+            enterKeyDisabled = false; // Re-enable after 5 seconds
+        }, 5000);
     }
 });
 
 function sendMessage() {
     const messageText = userInput.value.trim();
-    console.log(messageText);
+
     // Append user message even if it's empty
     appendMessage('user', messageText);
     userInput.value = ''; // Clear the input
 
+    // Disable the send button
+    sendButton.disabled = true;
+
+    // Re-enable the button after 5 seconds
+    setTimeout(() => {
+        sendButton.disabled = false;
+    }, 5000);
+
     if (messageText === '') {
-        setTimeout(() => {
-            typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
-        }, 1000);
+        typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
     } else {
         // Simulate bot typing response
         setTimeout(() => {
@@ -38,7 +50,7 @@ function typeOutMessage(text, sender) {
     
     const title = document.createElement('div');
     title.classList.add('title');
-    title.textContent = sender === 'user' ? 'You' : 'Assistant';
+    title.textContent = sender === 'bot' ? 'Assistant' : ''; // Only show title for bot
 
     const messageBox = document.createElement('div');
     messageBox.classList.add('message-box');
@@ -70,21 +82,35 @@ function appendMessage(sender, text) {
     const messageDiv = document.createElement('div');
     messageDiv.classList.add('message', sender);
     
-    const title = document.createElement('div');
-    title.classList.add('title');
-    title.textContent = sender === 'user' ? 'User' : 'Assistant';
+    if (sender === 'user') {
+        const messageBox = document.createElement('div');
+        messageBox.classList.add('message-box');
+        messageBox.textContent = text; // Append empty text
 
-    const messageBox = document.createElement('div');
-    messageBox.classList.add('message-box');
-    messageBox.textContent = text; // Append empty text
+        const timestamp = document.createElement('div');
+        timestamp.classList.add('timestamp');
+        timestamp.textContent = getCurrentTime(); // Set timestamp for user message
 
-    const timestamp = document.createElement('div');
-    timestamp.classList.add('timestamp');
-    timestamp.textContent = getCurrentTime(); // Set timestamp for user message
+        messageDiv.appendChild(messageBox);
+        messageDiv.appendChild(timestamp);
+    } else {
+        const title = document.createElement('div');
+        title.classList.add('title');
+        title.textContent = 'Assistant';
 
-    messageDiv.appendChild(title);
-    messageDiv.appendChild(messageBox);
-    messageDiv.appendChild(timestamp);
+        const messageBox = document.createElement('div');
+        messageBox.classList.add('message-box');
+        messageBox.textContent = text;
+
+        const timestamp = document.createElement('div');
+        timestamp.classList.add('timestamp');
+        timestamp.textContent = getCurrentTime(); // Set timestamp for bot message
+
+        messageDiv.appendChild(title);
+        messageDiv.appendChild(messageBox);
+        messageDiv.appendChild(timestamp);
+    }
+
     chatContainer.appendChild(messageDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
 }
