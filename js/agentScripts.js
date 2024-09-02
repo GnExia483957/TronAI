@@ -15,7 +15,7 @@ userInput.addEventListener('keypress', function (e) {
 
 function sendMessage() {
     const messageText = userInput.value.trim();
-
+    console.log(messageText);
     // Append user message even if it's empty
     appendMessage('user', messageText);
     userInput.value = ''; // Clear the input
@@ -72,7 +72,7 @@ function appendMessage(sender, text) {
     
     const title = document.createElement('div');
     title.classList.add('title');
-    title.textContent = sender === 'user' ? 'You' : 'Assistant';
+    title.textContent = sender === 'user' ? 'User' : 'Assistant';
 
     const messageBox = document.createElement('div');
     messageBox.classList.add('message-box');
