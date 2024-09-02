@@ -3,7 +3,7 @@ const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 
 window.onload = function() {
-    appendMessage('bot', 'Dear Tron user, how can I help?');
+    appendMessage('bot', 'Hello Tron user, how can I help?');
 };
 
 sendButton.addEventListener('click', sendMessage);
@@ -15,15 +15,21 @@ userInput.addEventListener('keypress', function (e) {
 
 function sendMessage() {
     const messageText = userInput.value.trim();
-    if (messageText === '') return;
 
+    // Append user message even if it's empty
     appendMessage('user', messageText);
-    userInput.value = '';
+    userInput.value = ''; // Clear the input
 
-    // Simulate bot typing response
-    setTimeout(() => {
-        typeOutMessage("I'm here to help!", 'bot');
-    }, 1000);
+    if (messageText === '') {
+        setTimeout(() => {
+            typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
+        }, 1000);
+    } else {
+        // Simulate bot typing response
+        setTimeout(() => {
+            typeOutMessage("I'm here to help!", 'bot');
+        }, 1000);
+    }
 }
 
 function typeOutMessage(text, sender) {
@@ -70,7 +76,7 @@ function appendMessage(sender, text) {
 
     const messageBox = document.createElement('div');
     messageBox.classList.add('message-box');
-    messageBox.textContent = text;
+    messageBox.textContent = text; // Append empty text
 
     const timestamp = document.createElement('div');
     timestamp.classList.add('timestamp');
