@@ -39,7 +39,7 @@ function sendMessage() {
     } else {
         // Simulate bot typing response
         setTimeout(() => {
-            typeOutMessage("I'm here to help!", 'bot');
+            typeOutMessage("I don't know", 'bot');
         }, 1000);
     }
 }
@@ -69,7 +69,7 @@ function typeOutMessage(text, sender) {
         if (index < text.length) {
             messageBox.textContent += text.charAt(index);
             index++;
-            setTimeout(typeCharacter, 50); // Adjust typing speed here
+            setTimeout(typeCharacter, 0); // Adjust typing speed here
         } else {
             timestamp.textContent = getCurrentTime(); // Set timestamp after typing
             chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
@@ -119,3 +119,19 @@ function getCurrentTime() {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
+
+$.ajax({
+    url: 'http://192.168.1.59:8810/agent',
+    type: 'POST',
+    contentType: 'application/json',
+    data: JSON.stringify({
+        query: 'band oracle',
+        session_id: '749530f51b5f11d14364c208c5822acd531384be4a1ae5f514e98ebda2daf72f'
+    }),
+    success: function(response) {
+        console.log('Success:', response);
+    },
+    error: function(error) {
+        console.error('Error:', error);
+    }
+});
