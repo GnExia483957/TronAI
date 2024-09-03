@@ -1,8 +1,8 @@
 // Define the query variable
-let query = 'what is Tron'; // Change this to your desired query
+let query = 'what is tron'; // Change this to your desired query
 
 // Use the variable in the fetch request
-fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+fetch(`https://95bf-182-239-122-127.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
     method: 'POST',
     headers: {
         'Accept': 'application/json',

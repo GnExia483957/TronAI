@@ -15,15 +15,12 @@ userInput.addEventListener('keypress', function (e) {
         enterKeyDisabled = true; // Disable further input
         setTimeout(() => {
             enterKeyDisabled = false; // Re-enable after 5 seconds
-        }, 9000);
+        }, 4000);
     }
 });
 
 
-
-let messageOutput = "TRON is an open-source public blockchain platform that supports smart contracts. It is compatible with Ethereum, allowing for the migration of smart contracts with minor modifications. TRON uses a unique consensus mechanism called DPOS, which enables faster transactions than Ethereum's POW consensus. TRON's native cryptocurrency, TRX, is used for various purposes, including staking, DeFi lending, and NFT marketplaces. TRON's state transition function, known as the TRON Virtual Machine (TVM), defines the rules for computing a new valid state from block to block."
-
-function sendMessage() {
+    function sendMessage() {
     const messageText = userInput.value.trim();
 
     // Append user message even if it's empty
@@ -36,48 +33,44 @@ function sendMessage() {
     // Re-enable the button after 5 seconds
     setTimeout(() => {
         sendButton.disabled = false;
-    }, 9000);
+    }, 3000);
 
     if (messageText === '') {
         typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
     } else {
         let query = messageText
+        console.log(query);
         // Use the variable in the fetch request
-        fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+        fetch('https://95bf-182-239-122-127.ngrok-free.app/v1/g_chat', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({})
-        })
-        .then(response => {
+            body: JSON.stringify({
+                query: query
+            })
+          })
+          .then(response => {
             if (!response.ok) {
-                throw new Error('Network response was not ok ' + response.statusText);
+                throw new Error('Network response was not ok');
             }
             return response.json();
-        })
-        .then(data => {
-            // Simulate bot typing response
+          })
+          .then(data => {
             console.log("API Call Successful")
+            console.log(data);
             setTimeout(() => {
                 typeOutMessage(data.data.answer, 'bot');
             }, 1000);
-
-        })
-        .catch(error => {
-            console.error('Error:', error);
-        });
         
-
-
+          })
+          .catch(error => {
+            console.error('There was a problem with the fetch operation:', error);
+          });
+        
     }
 }
-
-
-
-
-
 
 function typeOutMessage(text, sender) {
     const messageDiv = document.createElement('div');
