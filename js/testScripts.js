@@ -1,24 +1,23 @@
-const url = 'http://192.168.1.59:8810/agent';
-const data = {
-    query: 'what is tron',
-    session_id: '749530f51b5f11d14364c208c5822acd531384be4a1ae5f514e98ebda2daf72f'
-};
+// Define the query variable
+let query = 'what is Tron'; // Change this to your desired query
 
-fetch(url, {
+// Use the variable in the fetch request
+fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
     method: 'POST',
     headers: {
+        'Accept': 'application/json',
         'Content-Type': 'application/json'
     },
-    body: JSON.stringify(data)
+    body: JSON.stringify({})
 })
 .then(response => {
     if (!response.ok) {
-        throw new Error(`HTTP error! Status: ${response.status}`);
+        throw new Error('Network response was not ok ' + response.statusText);
     }
-    return response.json(); // Parse the JSON from the response
+    return response.json();
 })
 .then(data => {
-    console.log('Success:', data);
+    console.log(data);
 })
 .catch(error => {
     console.error('Error:', error);

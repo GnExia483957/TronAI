@@ -15,19 +15,24 @@ userInput.addEventListener('keypress', function (e) {
         enterKeyDisabled = true; // Disable further input
         setTimeout(() => {
             enterKeyDisabled = false; // Re-enable after 5 seconds
-        }, 5000);
+        }, 0);
     }
 });
 
+
+
+let messageOutput = "TRON is an open-source public blockchain platform that supports smart contracts. It is compatible with Ethereum, allowing for the migration of smart contracts with minor modifications. TRON uses a unique consensus mechanism called DPOS, which enables faster transactions than Ethereum's POW consensus. TRON's native cryptocurrency, TRX, is used for various purposes, including staking, DeFi lending, and NFT marketplaces. TRON's state transition function, known as the TRON Virtual Machine (TVM), defines the rules for computing a new valid state from block to block."
+
 function sendMessage() {
     const messageText = userInput.value.trim();
+    console.log(messageText);
 
     // Append user message even if it's empty
     appendMessage('user', messageText);
     userInput.value = ''; // Clear the input
 
     // Disable the send button
-    sendButton.disabled = true;
+    sendButton.disabled = false;
 
     // Re-enable the button after 5 seconds
     setTimeout(() => {
@@ -39,7 +44,7 @@ function sendMessage() {
     } else {
         // Simulate bot typing response
         setTimeout(() => {
-            typeOutMessage("I don't know", 'bot');
+            typeOutMessage(messageOutput, 'bot');
         }, 1000);
     }
 }
@@ -63,7 +68,7 @@ function typeOutMessage(text, sender) {
     messageDiv.appendChild(timestamp);
     chatContainer.appendChild(messageDiv);
     chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
-
+ 
     let index = 0;
     function typeCharacter() {
         if (index < text.length) {
@@ -120,18 +125,28 @@ function getCurrentTime() {
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
 
-$.ajax({
-    url: 'http://192.168.1.59:8810/agent',
-    type: 'POST',
-    contentType: 'application/json',
-    data: JSON.stringify({
-        query: 'band oracle',
-        session_id: '749530f51b5f11d14364c208c5822acd531384be4a1ae5f514e98ebda2daf72f'
-    }),
-    success: function(response) {
-        console.log('Success:', response);
+
+// Define the query variable
+let query = 'what is Tron'; // Change this to your desired query
+
+// Use the variable in the fetch request
+fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+    method: 'POST',
+    headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json'
     },
-    error: function(error) {
-        console.error('Error:', error);
+    body: JSON.stringify({})
+})
+.then(response => {
+    if (!response.ok) {
+        throw new Error('Network response was not ok ' + response.statusText);
     }
+    return response.json();
+})
+.then(data => {
+    console.log(data);
+})
+.catch(error => {
+    console.error('Error:', error);
 });
