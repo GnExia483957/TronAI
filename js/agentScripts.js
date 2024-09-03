@@ -15,7 +15,7 @@ userInput.addEventListener('keypress', function (e) {
         enterKeyDisabled = true; // Disable further input
         setTimeout(() => {
             enterKeyDisabled = false; // Re-enable after 5 seconds
-        }, 0);
+        }, 9000);
     }
 });
 
@@ -25,7 +25,6 @@ let messageOutput = "TRON is an open-source public blockchain platform that supp
 
 function sendMessage() {
     const messageText = userInput.value.trim();
-    console.log(messageText);
 
     // Append user message even if it's empty
     appendMessage('user', messageText);
@@ -37,17 +36,48 @@ function sendMessage() {
     // Re-enable the button after 5 seconds
     setTimeout(() => {
         sendButton.disabled = false;
-    }, 5000);
+    }, 9000);
 
     if (messageText === '') {
         typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
     } else {
-        // Simulate bot typing response
-        setTimeout(() => {
-            typeOutMessage(messageOutput, 'bot');
-        }, 1000);
+        let query = messageText
+        // Use the variable in the fetch request
+        fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({})
+        })
+        .then(response => {
+            if (!response.ok) {
+                throw new Error('Network response was not ok ' + response.statusText);
+            }
+            return response.json();
+        })
+        .then(data => {
+            // Simulate bot typing response
+            console.log("API Call Successful")
+            setTimeout(() => {
+                typeOutMessage(data.data.answer, 'bot');
+            }, 1000);
+
+        })
+        .catch(error => {
+            console.error('Error:', error);
+        });
+        
+
+
     }
 }
+
+
+
+
+
 
 function typeOutMessage(text, sender) {
     const messageDiv = document.createElement('div');
@@ -124,29 +154,3 @@ function getCurrentTime() {
     const now = new Date();
     return now.toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' });
 }
-
-
-// Define the query variable
-let query = 'what is Tron'; // Change this to your desired query
-
-// Use the variable in the fetch request
-fetch(`https://7c43-38-98-190-164.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
-    method: 'POST',
-    headers: {
-        'Accept': 'application/json',
-        'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({})
-})
-.then(response => {
-    if (!response.ok) {
-        throw new Error('Network response was not ok ' + response.statusText);
-    }
-    return response.json();
-})
-.then(data => {
-    console.log(data);
-})
-.catch(error => {
-    console.error('Error:', error);
-});
