@@ -78,7 +78,7 @@ function typeOutMessage(text, sender) {
     
     const title = document.createElement('div');
     title.classList.add('title');
-    title.textContent = sender === 'bot' ? 'Assistant' : ''; // Only show title for bot
+    title.textContent = sender === 'bot' ? 'Assistant' : ''; // Show title for bot only
 
     const messageBox = document.createElement('div');
     messageBox.classList.add('message-box');
@@ -90,17 +90,17 @@ function typeOutMessage(text, sender) {
     messageDiv.appendChild(messageBox);
     messageDiv.appendChild(timestamp);
     chatContainer.appendChild(messageDiv);
-    chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
- 
+    
     let index = 0;
     function typeCharacter() {
         if (index < text.length) {
             messageBox.textContent += text.charAt(index);
             index++;
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Keep scrolling to the bottom
             setTimeout(typeCharacter, 0); // Adjust typing speed here
         } else {
             timestamp.textContent = getCurrentTime(); // Set timestamp after typing
-            chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+            chatContainer.scrollTop = chatContainer.scrollHeight; // Final scroll to the bottom
         }
     }
     typeCharacter();
