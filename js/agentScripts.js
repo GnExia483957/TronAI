@@ -48,7 +48,10 @@ userInput.addEventListener('keypress', function (e) {
             },
             body: JSON.stringify({
                 query: query
-            })
+            }),
+            //do not remove this as it creates the session_id for the chat
+            credentials: 'include'
+            ///////////////////////////////////
           })
           .then(response => {
             if (!response.ok) {
@@ -57,6 +60,7 @@ userInput.addEventListener('keypress', function (e) {
             return response.json();
           })
           .then(data => {
+            console.log("ok")
             setTimeout(() => {
                 typeOutMessage(data.data.answer, 'bot');
             }, 1000);
@@ -65,7 +69,6 @@ userInput.addEventListener('keypress', function (e) {
           .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
           });
-        
     }
 }
 
@@ -94,7 +97,7 @@ function typeOutMessage(text, sender) {
             messageBox.textContent += text.charAt(index);
             index++;
             chatContainer.scrollTop = chatContainer.scrollHeight; // Keep scrolling to the bottom
-            setTimeout(typeCharacter, 0); // Adjust typing speed here
+            setTimeout(typeCharacter, 30); // Adjust typing speed here
         } else {
             timestamp.textContent = getCurrentTime(); // Set timestamp after typing
             chatContainer.scrollTop = chatContainer.scrollHeight; // Final scroll to the bottom
