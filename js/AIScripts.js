@@ -1,6 +1,7 @@
 let inputValue = localStorage.getItem('inputValue');
 const myInput = document.getElementById('myInput');
 let searchBtn = document.getElementById('toggleBtn');
+const loadingContainer = document.querySelector('.loading-container');
 
 if (inputValue && inputValue.trim() !== '') {
   window.addEventListener('load', function() {
@@ -36,22 +37,12 @@ myInput.addEventListener('keydown', (event) => {
   }
 });
 const apiUrl = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:search';
-const authToken = 'Bearer ya29.a0AcM612yqyOKjJXeaJG0wYeqFrN0tPUobXN4y_Aqv_2Y9UObQryUXEeKuz49fBT2XeyLHDC69mLJwSo7JFoY71NyCEgqMOyRh7HRyReVFWzoVEtLwpw06w_T29cPfgOGPExMy1Aqz41ezXeRSU4rvEev9ku2ieU1X9ahUJq0ggW-PgZEaCgYKAdkSARASFQHGX2MikGGevoi1f_SI_jZ9IVqodw0182';
+const authToken = 'Bearer ya29.a0AcM612ynqIH1SGeSXoXJBfERQ7VYhk_q3TiTTH7ljjZ29V02p62pcMEC7YiupTRN1tpirgjre35aTU5x6GDp7Kj7KXHQEo-oiGhGjRPKB_de1Rsh5VyovX2Mg8P_AEFoSAM4jnYPQCvVdH1-B6CaXEPnY3DwMqUCvLfW3xD0yc_YukEaCgYKAboSARASFQHGX2MihIZml3pYIDlJ5OvFWYA5eg0182';
 const pageSize = 3;
 const session = 'projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/sessions/-';
 const spellCorrectionSpec = { mode: 'AUTO' };
 
 
-// AI Button
-const loadingBtn = document.getElementById('toggleBtn');
-// AI 按钮
-// 获取 ID 为 'toggleBtn' 的元素
-
-const loadingContainer = document.querySelector('.loading-container');
-const toggleButton = document.getElementById('toggleButton');
-
-const loadingIndicator = document.getElementById('loadingIndicator');
-// 获取 ID 为 'loadingIndicator' 的元素
 
 //////////////////////////////////////////////////////////////////////////////////////
 function clearAIDivs() {
@@ -85,35 +76,30 @@ function errorInput(){
 
 function aiSearch(query) {
   // Make the fetch request
-  fetch(apiUrl, {
-    method: 'POST',
-    headers: {
-      'Authorization': authToken,
-      'Content-Type': 'application/json'
-    },
-    body: JSON.stringify({
-      query: query,
-      pageSize: pageSize,
-      session: session,
-      spellCorrectionSpec: spellCorrectionSpec
-    })
+  // Define the query variable
+  // Use the variable in the fetch request
+  fetch(`https://95bf-182-239-122-127.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+      method: 'POST',
+      headers: {
+          'Accept': 'application/json',
+          'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({})
   })
   .then(response => {
-    if (!response.ok) {
-      throw new Error(`HTTP error ${response.status}`);
-    }
-    return response.json();
+      if (!response.ok) {
+          throw new Error('Network response was not ok ' + response.statusText);
+      }
+      return response.json();
   })
   .then(data => {
-    // Handle the response data
-    let initialData = data;
-    let queryId1 = data.sessionInfo.queryId;
-    let sessionName = data.sessionInfo.name;
-    apiCall2(query, queryId1, sessionName, initialData);
+      toggleLoading();
+      appendText(data.data.answer);
+      appendSearchResults(data.data);
+      
   })
   .catch(error => {
-    // Handle any errors
-    console.error(error);
+      console.error('Error:', error);
   });
 }
 
@@ -123,9 +109,9 @@ function appendSearchResults(data) {
     // Update the existing .AI-Search-Results element
     $('.AI-Search-Results').each(function(index) {
       // Update the content of the existing .AI-Search-Results element
-      $(this).find('#results-link').text(data.results[index].document.derivedStructData.link);
-      $(this).find('#results-header').text(data.results[index].document.derivedStructData.title);
-      $(this).find('#results-description').text(data.results[index].document.derivedStructData.snippets[0].snippet);
+      $(this).find('#results-link').text(data.pages[index].link);
+      $(this).find('#results-header').text(data.pages[index].title);
+      $(this).find('#results-description').text(data.pages[index].snippet);
     });
   } else {
     // Create a new .AI-Search-Results element
@@ -133,13 +119,14 @@ function appendSearchResults(data) {
       <div id="reference-header">Reference Documentation</div>
     `);
 
+    console.log(data.pages[0]);
     for (let i = 0; i < pageSize; i++) {
       $('#reference-header').append(`
         <div class="AI-Search-Results">
-        <a id="search-link" href="${data.results[i].document.derivedStructData.link}">
-          <div id="results-link">${data.results[i].document.derivedStructData.link}</div>
-          <div id="results-header">${data.results[i].document.derivedStructData.title}</div>
-          <div id="results-description">${data.results[i].document.derivedStructData.snippets[0].snippet}</div>
+        <a id="search-link" href="${data.pages[i].link}">
+          <div id="results-link">${data.pages[i].link}</div>
+          <div id="results-header">${data.pages[i].title}</div>
+          <div id="results-description">${data.pages[i].snippet}</div>
           </div>
         </a>
       `);
@@ -148,53 +135,6 @@ function appendSearchResults(data) {
 }
 
 ////////////////////////////////////////////////////////////////////////////////////
-
-// Set the request parameters
-  function apiCall2(query, queryId1, sessionName, initialData){
-
-  const apiUrl2 = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:answer';
-  const query2 = {
-      text: query,
-      queryId: queryId1
-  };
-  const session2 = sessionName;
-  const relatedQuestionsSpec = {
-      enable: true
-  };
-  const answerGenerationSpec = {
-      ignoreAdversarialQuery: true,
-      ignoreNonAnswerSeekingQuery: true,
-      ignoreLowRelevantContent: true,
-      includeCitations: true
-  };
-  
-  // Make the fetch request 2
-  fetch(apiUrl2, {
-      method: 'POST',
-      headers: {
-          'Authorization': authToken,
-          'Content-Type': 'application/json'
-      },
-      body: JSON.stringify({
-          query: query2,
-          session: session2,
-          relatedQuestionsSpec: relatedQuestionsSpec,
-          answerGenerationSpec: answerGenerationSpec
-      })
-  })
-  .then(response => response.json())
-  .then(data => {
-    let output = data.answer.answerText;
-      appendText(output);
-      appendSearchResults(initialData);
-      toggleLoading();
-    })
-  .catch(error => {
-      // Handle any errors
-      toggleLoading();
-      console.error(error);
-  });
-}
 
 function appendText(output) {
   var outputElement = document.querySelector('.output');
