@@ -39,7 +39,6 @@ userInput.addEventListener('keypress', function (e) {
         typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
     } else {
         let query = messageText
-        console.log(query);
         // Use the variable in the fetch request
         fetch('https://95bf-182-239-122-127.ngrok-free.app/v1/g_chat', {
             method: 'POST',
@@ -58,8 +57,6 @@ userInput.addEventListener('keypress', function (e) {
             return response.json();
           })
           .then(data => {
-            console.log("API Call Successful")
-            console.log(data);
             setTimeout(() => {
                 typeOutMessage(data.data.answer, 'bot');
             }, 1000);
