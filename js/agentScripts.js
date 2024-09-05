@@ -53,10 +53,10 @@ function sendMessage() {
         messageDiv.appendChild(messageBox);
         messageDiv.appendChild(timestamp);
         chatContainer.appendChild(messageDiv);
-        chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
-
+        
         // Show thinking animation inside the message box
         showThinkingAnimation(messageBox);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
 
         // Fetch the response
         fetch('https://c83a-182-239-89-23.ngrok-free.app/v1/g_chat', {
@@ -97,7 +97,7 @@ function typeOutMessage(text, sender, messageBox) {
             messageBox.textContent = text.substring(0, index + 1); // Update text progressively
             index++;
             chatContainer.scrollTop = chatContainer.scrollHeight; // Keep scrolling to the bottom
-            setTimeout(typeCharacter, 15); // Adjust typing speed here
+            setTimeout(typeCharacter, 0); // Adjust typing speed here
         } else {
             const timestamp = messageBox.parentElement.querySelector('.timestamp');
             timestamp.textContent = getCurrentTime(); // Set timestamp after typing
