@@ -2,7 +2,7 @@ const chatContainer = document.getElementById('chatContainer');
 const userInput = document.getElementById('userInput');
 const sendButton = document.getElementById('sendButton');
 
-window.onload = function() {
+window.onload = function () {
     appendMessage('bot', 'Dear Tron user, how can I help?');
 };
 
@@ -19,91 +19,110 @@ userInput.addEventListener('keypress', function (e) {
     }
 });
 
-
-    function sendMessage() {
+function sendMessage() {
     const messageText = userInput.value.trim();
 
-    // Append user message even if it's empty
+    // Append user message
     appendMessage('user', messageText);
     userInput.value = ''; // Clear the input
 
     // Disable the send button
-    sendButton.disabled = false;
-
-    // Re-enable the button after 5 seconds
-    setTimeout(() => {
-        sendButton.disabled = false;
-    }, 3000);
+    sendButton.disabled = true;
 
     if (messageText === '') {
         typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
+        sendButton.disabled = false; // Re-enable button
     } else {
-        let query = messageText
-        // Use the variable in the fetch request
-        fetch('https://95bf-182-239-122-127.ngrok-free.app/v1/g_chat', {
+        let query = messageText;
+
+        // Create a placeholder message for the bot
+        const messageDiv = document.createElement('div');
+        messageDiv.classList.add('message', 'bot');
+
+        const title = document.createElement('div');
+        title.classList.add('title');
+        title.textContent = 'Assistant';
+
+        const messageBox = document.createElement('div');
+        messageBox.classList.add('message-box');
+
+        const timestamp = document.createElement('div');
+        timestamp.classList.add('timestamp');
+
+        messageDiv.appendChild(title);
+        messageDiv.appendChild(messageBox);
+        messageDiv.appendChild(timestamp);
+        chatContainer.appendChild(messageDiv);
+        chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+
+        // Show thinking animation inside the message box
+        showThinkingAnimation(messageBox);
+
+        // Fetch the response
+        fetch('https://c83a-182-239-89-23.ngrok-free.app/v1/g_chat', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
                 'Content-Type': 'application/json'
             },
-            body: JSON.stringify({
-                query: query
-            }),
-            //do not remove this as it creates the session_id for the chatbot
-            //不要删除它，因为它会为聊天创建session_id
+            body: JSON.stringify({ query: query }),
+            //do not delete credentials, helps create the session_ID needed later
             credentials: 'include'
-            ///////////////////////////////////
-          })
-          .then(response => {
+        })
+        .then(response => {
             if (!response.ok) {
                 throw new Error('Network response was not ok');
             }
             return response.json();
-          })
-          .then(data => {
-            setTimeout(() => {
-                typeOutMessage(data.data.answer, 'bot');
-            }, 1000);
-        
-          })
-          .catch(error => {
+        })
+        .then(data => {
+            hideThinkingAnimation(); // Hide thinking animation
+            typeOutMessage(data.data.answer, 'bot', messageBox); // Start typing the response
+        })
+        .catch(error => {
             console.error('There was a problem with the fetch operation:', error);
-          });
+            hideThinkingAnimation(); // Hide thinking animation on error
+            typeOutMessage('Sorry, something went wrong. Please try again.', 'bot', messageBox);
+        })
+        .finally(() => {
+            sendButton.disabled = false; // Re-enable the send button
+        });
     }
 }
 
-function typeOutMessage(text, sender) {
-    const messageDiv = document.createElement('div');
-    messageDiv.classList.add('message', sender);
-    
-    const title = document.createElement('div');
-    title.classList.add('title');
-    title.textContent = sender === 'bot' ? 'Assistant' : ''; // Show title for bot only
-
-    const messageBox = document.createElement('div');
-    messageBox.classList.add('message-box');
-
-    const timestamp = document.createElement('div');
-    timestamp.classList.add('timestamp');
-
-    messageDiv.appendChild(title);
-    messageDiv.appendChild(messageBox);
-    messageDiv.appendChild(timestamp);
-    chatContainer.appendChild(messageDiv);
-    
+function typeOutMessage(text, sender, messageBox) {
     let index = 0;
     function typeCharacter() {
         if (index < text.length) {
-            messageBox.textContent += text.charAt(index);
+            messageBox.textContent = text.substring(0, index + 1); // Update text progressively
             index++;
             chatContainer.scrollTop = chatContainer.scrollHeight; // Keep scrolling to the bottom
-            setTimeout(typeCharacter, 30); // Adjust typing speed here
+            setTimeout(typeCharacter, 15); // Adjust typing speed here
         } else {
+            const timestamp = messageBox.parentElement.querySelector('.timestamp');
             timestamp.textContent = getCurrentTime(); // Set timestamp after typing
             chatContainer.scrollTop = chatContainer.scrollHeight; // Final scroll to the bottom
         }
     }
     typeCharacter();
+}
+
+function showThinkingAnimation(container) {
+    const loader = document.createElement('div');
+    loader.classList.add('loader');
+    for (let i = 0; i < 5; i++) {
+        const dot = document.createElement('div');
+        dot.classList.add('dot');
+        loader.appendChild(dot);
+    }
+    container.appendChild(loader);
+}
+
+function hideThinkingAnimation() {
+    const loader = document.querySelector('.loader');
+    if (loader) {
+        loader.remove();
+    }
 }
 
 function appendMessage(sender, text) {

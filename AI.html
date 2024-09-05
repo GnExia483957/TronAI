@@ -8,7 +8,6 @@
   <title>Tron.Ai/AI</title>
   <link rel="icon" type="image/x-icon" href="assets/images/Tron-Icon.ico">
   <link rel="stylesheet" href="./css/navBarStyles.css"></link>
-  <link rel="stylesheet" href="./css/navBar2styles.css"></link>
   <link rel="stylesheet" href="./css/styles.css"></link>
   <link rel="stylesheet" href="./css/animationStyles.css"></link>
   <link rel="stylesheet" href="./css/aiStyles.css"></link>
@@ -16,7 +15,12 @@
 
   <!-- jQuery -->
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-
+<style>
+  .search-container{
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+</style>
 
 </link>
 </head>
@@ -48,26 +52,20 @@
     </div>
   </nav>
     
-    <div class="navBar2">
-      <div id="newsLink">
-        <a href="news.html">
-          News
-        </a>
-      </div>
-
-      <div id="agentLink">
-        <a href="agent.html">
-          Agent
-        </a>
-      </div>
-
-    </div>
   </div>
   
 
   <div class="AI-outer-container">
       <div class="search-container">
         <div class="inner-search">
+          <div class="icon-container">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="16" height="16" fill="#FF0000" class="bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.394 1.394l3.75 3.75a1 1 0 0 0 1.415-1.415l-3.75-3.75zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+          </div>
+  
           <input class ="fa fa-search" id="myInput" type="text" placeholder="Ask TronAI"></input>
           <button onclick=getValue() id="toggleBtn">AI Analyze</button>
         </div>
