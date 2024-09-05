@@ -58,12 +58,15 @@ input:-webkit-autofill:active {
     line-height: 1.4;
     border-radius: 10px 10px 10px 0;
     color: black;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);  /* Soft black drop-shadow */
 }
 
 .user .message-box {
     background-color: #8e82fc;
     border-radius: 10px 10px 0 10px;
     color: white;
+    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.2);  /* Soft black drop-shadow */
+
 }
 
 .timestamp {
@@ -76,6 +79,8 @@ input:-webkit-autofill:active {
     display: flex;
     padding: 10px;
     position: relative;
+    background: #f1f1f1;
+    border-radius: 15px;
 }
 
 .input-container input {

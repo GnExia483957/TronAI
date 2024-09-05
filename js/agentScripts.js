@@ -49,7 +49,8 @@ userInput.addEventListener('keypress', function (e) {
             body: JSON.stringify({
                 query: query
             }),
-            //do not remove this as it creates the session_id for the chat
+            //do not remove this as it creates the session_id for the chatbot
+            //不要删除它，因为它会为聊天创建session_id
             credentials: 'include'
             ///////////////////////////////////
           })
@@ -60,7 +61,6 @@ userInput.addEventListener('keypress', function (e) {
             return response.json();
           })
           .then(data => {
-            console.log("ok")
             setTimeout(() => {
                 typeOutMessage(data.data.answer, 'bot');
             }, 1000);
