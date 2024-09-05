@@ -78,7 +78,7 @@ function aiSearch(query) {
   // Make the fetch request
   // Define the query variable
   // Use the variable in the fetch request
-  fetch(`https://95bf-182-239-122-127.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+  fetch(`https://c83a-182-239-89-23.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -119,7 +119,6 @@ function appendSearchResults(data) {
       <div id="reference-header">Reference Documentation</div>
     `);
 
-    console.log(data.pages[0]);
     for (let i = 0; i < pageSize; i++) {
       $('#reference-header').append(`
         <div class="AI-Search-Results">

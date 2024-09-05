@@ -9,7 +9,7 @@ input:-webkit-autofill:active {
 
 /* Add your custom CSS styles here */
 body {
-  background-image: linear-gradient(#8E0000, black 30%);
+  background-image: linear-gradient(rgb(142, 0, 0), black 30%);
   min-height: 100vh;
   width: auto;
   margin: 0;
@@ -56,6 +56,7 @@ body {
   font-weight: bold;
   border: 1px solid #ffffff;
   font-family: 'Roboto', sans-serif;
+  margin-left:22px;
 }
 
 .month-year {
@@ -139,23 +140,34 @@ a:hover {
   cursor: pointer;
   font-size: 13px;
   padding: 5px 20px;
-  margin-bottom: 4.2em;
+  margin-bottom: 1.3em;
 }
 
 .search-container {
   border-radius: 1.1rem;
   background-color: #1A1A1A;
-  padding: 3px;
+  padding: 2px;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.search-title {
+  color: white;  /* Title color */
+  margin-bottom: 5px;
+  margin-left: 5px;  /* Space between title and search container */
 }
 
 .inner-search {
   background-color: #0F0F0F;
   border-radius: 2rem;
+  border: 2px solid #FF0000;  /* Added red border */
   display: flex;
   align-items: center;
-  padding: 3px 10px;
+  padding: 5px;
+}
+
+.icon-container {
+  margin-left: 10px; /* Space between icon and input */
 }
 
 .inner-search input {
@@ -164,10 +176,14 @@ a:hover {
   flex-grow: 1;
   font-size: 0.9rem;
   background-color: #0F0F0F;
+  border-radius: 15px;
+  padding-left: 25px; /* Space for the icon */
+  font-weight: 600;
+
 }
 
 .inner-search ::placeholder {
-  color: rgb(117, 117, 117);
+  color: #757575;
 }
 
 input[type=text] {
@@ -181,6 +197,7 @@ input[type=text] {
   color: white;
   cursor: pointer;
   padding: 2px 20px;
+  font-weight: 500;
 }
 
 .output {
@@ -192,9 +209,10 @@ input[type=text] {
 }
 
 .search-index-container{
+  display:flex;
+  justify-content: center;
   max-width:500px;
-  margin: 30vh auto;
-  align-items: flex-end;
+  margin: 30vh 5px 0 5px;
 }
 
 
