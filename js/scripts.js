@@ -2,11 +2,11 @@ const inputField = document.getElementById('input-field');
 let toggleBtn = document.getElementById('toggleBtn');
 
 
-inputField.addEventListener('keydown', function(event) {
-  if (event.key === 'Enter') {
-    saveInput();
-  }
-});
+// inputField.addEventListener('keydown', function(event) {
+//   if (event.key === 'Enter') {
+//     saveInput();
+//   }
+// });
 
 function saveInput() {
   const inputValue = inputField.value.trim();
@@ -19,43 +19,33 @@ function saveInput() {
   }
 }
 
-////////////////////////////////////////////////////////////////////////////////////
 
+///////
+//Modal Script
+///////
+const modal = document.getElementById("myModal");
+const btn = document.getElementById("openModal");
+const span = document.getElementById("closeModal");
 
-//test algorithm that filters out sentences without certain words
+btn.onclick = function() {
+    modal.style.display = "block"; // Show the modal
+    setTimeout(() => {
+        modal.classList.add("show"); // Add the slide-in effect
+    }, 10); // Delay to allow display to take effect
+}
 
-// const sentences = [
-//   "The Tron Foundation is a blockchain company.",
-//   "USDT is a popular stablecoin.",
-//   "Justin Sun is the CEO of Tron.",
-//   "Ethereum is a popular blockchain platform.",
-//   "I invested in USDT last year.",
-//   "The Tron network has fast transaction speeds.",
-//   "Justin Sun is a influential figure in the cryptocurrency space.",
-//   "Bitcoin is the most well-known cryptocurrency.",
-//   "USDT is used for trading on many exchanges.",
-//   "The Tron project has been expanding recently."
-// ];
+span.onclick = function() {
+    modal.classList.remove("show"); // Remove the slide-in effect
+    setTimeout(() => {
+        modal.style.display = "none"; // Hide the modal after animation
+    }, 300); // Match the duration of the transition
+}
 
-// const filteredSentences = sentences.filter(sentence =>
-//   sentence.includes("Tron") || sentence.includes("USDT") || sentence.includes("Justin")
-// );
-
-// const filteredOutSentences = sentences.filter(sentence =>
-//  "!"sentence.includes("Tron") && !sentence.includes("USDT") && !sentence.includes("Justin")
-// );
-
-// console.log("Filtered Sentences:");
-// console.log(filteredSentences);
-
-
-{/* <div class="news-container">
-  <div class="time">${getTimeAgo(data[i].date, data[i].time)}</div>
-  <div class="headline">${data[i].headline}</div>
-  <div class="news">${data[i].subheadline}</div>
-  <div id="news-link"><a href=https://coinmarketcap.com/ target="blank">Crypto News Link</a></div>
-</div> */}
-
-
-///////////////////////////////////////////////////////////////////////////
-
+window.onclick = function(event) {
+    if (event.target == modal) {
+        modal.classList.remove("show");
+        setTimeout(() => {
+            modal.style.display = "none";
+        }, 300);
+    }
+}
