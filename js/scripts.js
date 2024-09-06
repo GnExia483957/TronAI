@@ -2,11 +2,11 @@ const inputField = document.getElementById('input-field');
 let toggleBtn = document.getElementById('toggleBtn');
 
 
-// inputField.addEventListener('keydown', function(event) {
-//   if (event.key === 'Enter') {
-//     saveInput();
-//   }
-// });
+inputField.addEventListener('keydown', function(event) {
+  if (event.key === 'Enter') {
+    saveInput();
+  }
+});
 
 function saveInput() {
   const inputValue = inputField.value.trim();

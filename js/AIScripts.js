@@ -36,12 +36,6 @@ myInput.addEventListener('keydown', (event) => {
     getInputValue();
   }
 });
-const apiUrl = 'https://discoveryengine.googleapis.com/v1alpha/projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/servingConfigs/default_search:search';
-const authToken = 'Bearer ya29.a0AcM612ynqIH1SGeSXoXJBfERQ7VYhk_q3TiTTH7ljjZ29V02p62pcMEC7YiupTRN1tpirgjre35aTU5x6GDp7Kj7KXHQEo-oiGhGjRPKB_de1Rsh5VyovX2Mg8P_AEFoSAM4jnYPQCvVdH1-B6CaXEPnY3DwMqUCvLfW3xD0yc_YukEaCgYKAboSARASFQHGX2MihIZml3pYIDlJ5OvFWYA5eg0182';
-const pageSize = 3;
-const session = 'projects/1008121697399/locations/global/collections/default_collection/engines/tron-q-a_1723642895525/sessions/-';
-const spellCorrectionSpec = { mode: 'AUTO' };
-
 
 
 //////////////////////////////////////////////////////////////////////////////////////
@@ -78,7 +72,7 @@ function aiSearch(query) {
   // Make the fetch request
   // Define the query variable
   // Use the variable in the fetch request
-  fetch(`https://c83a-182-239-89-23.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
+  fetch(`https://0a4b-182-239-89-23.ngrok-free.app/v1/g_query?query=${encodeURIComponent(query)}`, {
       method: 'POST',
       headers: {
           'Accept': 'application/json',
@@ -119,7 +113,7 @@ function appendSearchResults(data) {
       <div id="reference-header">Reference Documentation</div>
     `);
 
-    for (let i = 0; i < pageSize; i++) {
+    for (let i = 0; i < 3; i++) {
       $('#reference-header').append(`
         <div class="AI-Search-Results">
         <a id="search-link" href="${data.pages[i].link}">

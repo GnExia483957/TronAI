@@ -34,7 +34,7 @@ function sendMessage() {
         sendButton.disabled = false; // Re-enable button
     } else {
         let query = messageText;
-
+        console.log(query);
         // Create a placeholder message for the bot
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message', 'bot');
@@ -59,7 +59,7 @@ function sendMessage() {
         chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
 
         // Fetch the response
-        fetch('https://c83a-182-239-89-23.ngrok-free.app/v1/g_chat', {
+        fetch('https://0a4b-182-239-89-23.ngrok-free.app/v1/g_chat', {
             method: 'POST',
             headers: {
                 'Accept': 'application/json',
