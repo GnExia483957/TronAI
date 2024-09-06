@@ -1,18 +1,16 @@
 .navBar2 {
     display: flex;
     align-items: center; /* Align items vertically centered */
-    padding-top: 20px;
-    padding-left: 10px;
-    padding-right: 10px;
-    padding-bottom: 2em;
-    justify-content: space-between; /* Space between elements */
+    padding: 20px 10px 2em; /* Combined padding for readability */
     width: 100%; /* Full width */
+    position: relative; /* Positioning context for absolute positioning */
 }
 
 #newsLink {
-    flex-grow: 1; /* Allow News to take up available space */
     text-align: center; /* Center the text */
-    margin-left: 8rem;
+    position: absolute; /* Allow centering */
+    left: 50%; /* Position from the left */
+    transform: translateX(-50%); /* Center it horizontally */
 }
 
 .navBar2 a {
@@ -34,5 +32,10 @@
 }
 
 #agentLink {
-    margin-right: 5em;
+    margin-left: auto; /* Pushes the agent link to the right */
+}
+
+#agentLink img {
+    width: 7%;
+    height: auto; /* Maintain aspect ratio */
 }
