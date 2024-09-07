@@ -1,16 +1,17 @@
 .navBar2 {
-    display: flex;
+    display: flex; /* Use flexbox for alignment */
     align-items: center; /* Align items vertically centered */
-    padding: 20px 10px 2em; /* Combined padding for readability */
+    justify-content: space-between; /* Space between items */
+    padding: 20px 10px; /* Combined padding for readability */
     width: 100%; /* Full width */
-    position: relative; /* Positioning context for absolute positioning */
+    margin: 0;
 }
 
 #newsLink {
     text-align: center; /* Center the text */
-    position: absolute; /* Allow centering */
-    left: 50%; /* Position from the left */
-    transform: translateX(-50%); /* Center it horizontally */
+    flex-grow: 1; /* Allow News to take up available space */
+    font-family: 'Roboto', sans-serif;
+    margin-left: 20px;
 }
 
 .navBar2 a {
@@ -18,7 +19,6 @@
     text-decoration: none;
     font-size: 30px;
     text-shadow: 5px 5px 5px black;
-    font-family: 'Roboto', sans-serif;
 }
 
 .navBar2 a:hover {
@@ -32,10 +32,10 @@
 }
 
 #agentLink {
-    margin-left: auto; /* Pushes the agent link to the right */
+    margin-right: 6em; /* Pushes the agent link to the right */
 }
 
 #agentLink img {
-    width: 7%;
+    width: 50px; /* Fixed width for the icon */
     height: auto; /* Maintain aspect ratio */
 }

@@ -9,10 +9,12 @@
     transition: left 0.3s ease;
     margin-top: 10em;
 }
+
 .modal.show {
     display: block; 
-    left: 0; 
+    left: 65%; /* Change this to control how far the modal slides in */
 }
+
 .modal-content {
     margin: 0; 
     border: none;
