@@ -8,7 +8,12 @@
   <link rel="stylesheet" href="./css/navBarStyles.css"></link>
   <link rel="stylesheet" href="./css/navBar2styles.css"></link>
   <link rel="stylesheet" href="./css/styles.css"></link>
+  <link rel="stylesheet" href="./css/modal.css"></link>
+  <link rel="stylesheet" href="./css/agentStyles.css"></link>
+
   <link rel="stylesheet" href="./css/animationStyles.css"></link>
+  <link rel="stylesheet" href="./css/modal.css"></link>
+
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.9.0/css/all.css">
   <meta name="google-site-verification" content="xkRgVwV157QjXRZdOfvYwZ2f75Dd8Bx7zu_7t3MTpnQ" />
   <meta name="theme-color" content="#8E0000"/>
@@ -56,22 +61,42 @@
 
   </div>
 
+  <div class="navBar2">
+    <div id="newsLink">
+        <a href="#" class="active">News</a>
+    </div>
+    <div id="agentLink">
+      <a id="openModal">
+        <img class="Agent Icon" src="./assets/images/AgentIcon.png" alt="Agent Icon" />
+    </a>
+  </div>
+</div>
 
-    <div class="navBar2">
-      <div id="newsLink">
-        <a href="index.html">
-          News
-        </a>
+
+    
+
+
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+          <div class="chatbot-container">
+              <button class="close-button" id="closeModal">X</button>
+
+              <div class="chat-container" id="chatContainer"></div>
+      
+              <div class="input-container">
+                  <input type="text" id="userInput" placeholder="Type your message..." />
+                  <button class="send-button" id="sendButton">Send</button>
+              </div>
+          </div>
       </div>
-
-      <div id="agentLink">
-        <a href="agent.html">
-            <img class="Agent Icon" src="./assets/images/AgentIcon.png" alt="Agent Icon" />
-        </a>
     </div>
 
-    </div>
-        
+
+
+
+
+
+
 
     <div class="outer-container">
 
@@ -81,7 +106,7 @@
     </div>
     
     <div id="news">
-    </div>
+    </div> 
     
     <div class="see-more">
       <button id="seeMoreBtn">See More</button>
@@ -108,6 +133,7 @@
 
   <script src="./js/scripts.js"> </script>
   <script src="./js/newsScript.js"> </script>
+  <script src="./js/agentScripts.js"> </script>
   
 </body>
 </html>
