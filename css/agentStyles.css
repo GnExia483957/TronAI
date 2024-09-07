@@ -12,8 +12,8 @@
             display: flex;
             flex-direction: column;
             max-width: 550px;
-            max-height: 40vh;
-            min-height: 40vh;
+            max-height: 72vh;
+            min-height: 72vh;
             margin: 0 auto; /* Center the container */
             background-color: #d3d3d3;
             border-radius: 15px;
