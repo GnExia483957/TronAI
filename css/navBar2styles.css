@@ -11,7 +11,7 @@
     text-align: center; /* Center the text */
     flex-grow: 1; /* Allow News to take up available space */
     font-family: 'Roboto', sans-serif;
-    margin-left: 200px;
+    margin-left: 260px;
 }
 
 .navBar2 a {
