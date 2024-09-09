@@ -14,12 +14,14 @@ input:-webkit-autofill:active {
     display: flex;
     flex-direction: column;
     max-width: 550px;
-    max-height: 77vh;
-    min-height: 77vh;
+    max-height: 74vh;
+    min-height: 74vh;
     margin: 0 auto; /* Center the container */
-    background-color: #ffffff;
+    background-color: #F5F6FA;
     border-radius: 15px;
     position: relative; /* Enable positioning for the close button */
+    border: 1px solid #000000;
+
 }
 
 .close-button {
@@ -119,7 +121,7 @@ input:-webkit-autofill:active {
     padding: 5px 10px;
     margin-right: 7px;
     border: none;
-    background-color: #EEF0F2;
+    background-color: #E8EBFA;
     color: rgb(0, 0, 0);
     border-radius: 25px;
     cursor: pointer;
