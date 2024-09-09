@@ -65,10 +65,12 @@ function loadNews() {
         for (let i = currentIndex; i < Math.min(currentIndex + itemsPerPage, data.length); i++) {
           newsContainer.append(`
             <div class="news-container">
-              <div class="time">${data[i].time}</div>
-              <div class="headline">${data[i].headline}</div>
-              <div class="news">${data[i].subheadline}</div>
-              <div id="news-link"><a href=https://coinmarketcap.com/ target="blank">Crypto News Link</a></div>
+              <div id="news-link">
+                <a href=https://coinmarketcap.com/ target="blank">
+                  <div class="time">${data[i].time}</div>
+                  <div class="headline">${data[i].headline}</div>
+                  <div class="news">${data[i].subheadline}</div>
+                </a></div>
             </div>
 
           `);

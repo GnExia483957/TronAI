@@ -77,8 +77,8 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  min-height: 420px;
-  max-height: 420px;
+  min-height: 410px;
+  max-height: 410px;
   margin: 0;
 }
 
@@ -88,7 +88,7 @@ body {
   min-width: 450px;
   border-radius: 1rem;
   background-color: #1A1A1A;
-  padding: 10px 30px 20px 30px;
+  padding: 0px 30px 20px 30px;
   margin: 0 0 10px 0;
   font-family: 'Google Sans', sans-serif;
 }
