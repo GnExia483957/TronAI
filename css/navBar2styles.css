@@ -39,3 +39,20 @@
     width: 50px; /* Fixed width for the icon */
     height: auto; /* Maintain aspect ratio */
 }
+
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    #agentLink{
+        margin-right: 5em;
+    }
+}
+
+@media (max-width: 480px) {
+    #newsLink {
+        margin-left: 4em;
+    }
+    #agentLink{
+        margin-right: 2em;
+    }
+}

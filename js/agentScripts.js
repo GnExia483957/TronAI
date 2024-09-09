@@ -34,7 +34,6 @@ function sendMessage() {
         sendButton.disabled = false; // Re-enable button
     } else {
         let query = messageText;
-        console.log(query);
         // Create a placeholder message for the bot
         const messageDiv = document.createElement('div');
         messageDiv.classList.add('message', 'bot');
