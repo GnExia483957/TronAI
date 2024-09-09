@@ -56,7 +56,7 @@ function getValue() {
   let value = input.value;
 
   if (value.trim() !== "") {
-    clearAIDivs();
+    clearAIDivs();    
     aiSearch(value);
   } else {
     errorInput();
@@ -171,4 +171,8 @@ function typeText(element, text) {
 
   typeWord();
 }
+
+
+
+
 
