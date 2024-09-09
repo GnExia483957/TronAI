@@ -73,7 +73,7 @@
   position: absolute;
   width: 130px;
   height: 100%;
-  background: linear-gradient(to right, rgba(76, 175, 80, 0), #870000, rgba(76, 175, 80, 0));
+  background: linear-gradient(to right, rgba(76, 175, 80, 0), #232ea0, rgba(76, 175, 80, 0));
   animation: loading-box 1.3s infinite ease-in-out;
 }
 
