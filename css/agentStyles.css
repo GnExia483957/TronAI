@@ -14,8 +14,8 @@ input:-webkit-autofill:active {
     display: flex;
     flex-direction: column;
     max-width: 550px;
-    max-height: 74vh;
-    min-height: 74vh;
+    max-height: 71vh;
+    min-height: 71vh;
     margin: 0 auto; /* Center the container */
     background-color: #F5F6FA;
     border-radius: 15px;

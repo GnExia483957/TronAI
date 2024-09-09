@@ -2,7 +2,7 @@
     display: flex; /* Use flexbox for alignment */
     align-items: center; /* Align items vertically centered */
     justify-content: space-between; /* Space between items */
-    padding: 20px 10px; /* Combined padding for readability */
+    padding: 20px 0 0; /* Combined padding for readability */
     width: 100%; /* Full width */
     margin: 0;
 }
