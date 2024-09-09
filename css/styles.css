@@ -56,7 +56,7 @@ body {
   align-items: center;
   width: 125px;
   height: 50px;
-  background: linear-gradient(to bottom, #ffffff 50%, #929292 50%);
+  background: linear-gradient(to bottom, #ffffff 50%, #ff0000 50%);
   border-radius: 10px;
   color: black;
   border: 1px solid #000000;
