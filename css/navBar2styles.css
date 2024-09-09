@@ -43,8 +43,11 @@
 
 /* Responsive adjustments */
 @media (max-width: 768px) {
+    #newsLink {
+        margin-left: 5em;
+    }
     #agentLink{
-        margin-right: 5em;
+        margin-right: 2em;
     }
 }
 
