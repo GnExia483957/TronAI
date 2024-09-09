@@ -22,7 +22,7 @@
 }
 
 .loading-text {
-  color: white;
+  color: rgb(0, 0, 0);
   margin-bottom: 10px;
   align-self: start;
   font-size: 1rem;
@@ -73,7 +73,7 @@
   position: absolute;
   width: 130px;
   height: 100%;
-  background: linear-gradient(to right, rgba(76, 175, 80, 0), #232ea0, rgba(76, 175, 80, 0));
+  background: linear-gradient(to right, rgba(76, 175, 80, 0), #5b5b5b, rgba(76, 175, 80, 0));
   animation: loading-box 1.3s infinite ease-in-out;
 }
 

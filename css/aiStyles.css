@@ -4,8 +4,8 @@
 .search-container #myInput:-webkit-autofill:hover,
 .search-container #myInput:-webkit-autofill:focus,
 .search-container #myInput:-webkit-autofill:active {
-    -webkit-box-shadow: 0 0 0 30px #0f0f0f inset !important;
-    -webkit-text-fill-color: white !important;
+    -webkit-box-shadow: 0 0 0 30px #ffffff inset !important;
+    -webkit-text-fill-color: black !important;
 }
 
 .AI-outer-container{

@@ -17,7 +17,7 @@ input:-webkit-autofill:active {
     max-height: 72vh;
     min-height: 72vh;
     margin: 0 auto; /* Center the container */
-    background-color: #d3d3d3;
+    background-color: #ffffff;
     border-radius: 15px;
     position: relative; /* Enable positioning for the close button */
 }
@@ -119,8 +119,8 @@ input:-webkit-autofill:active {
     padding: 5px 10px;
     margin-right: 7px;
     border: none;
-    background-color: #8e82fc;
-    color: white;
+    background-color: #EEF0F2;
+    color: rgb(0, 0, 0);
     border-radius: 25px;
     cursor: pointer;
 }

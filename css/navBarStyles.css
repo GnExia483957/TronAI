@@ -20,7 +20,7 @@ nav .logo a {
   text-decoration: none;
 }
 nav .logo #nav-title #title {
-  color: white;
+  color: black;
   font-family: 'Roboto', sans-serif;
   
 }
@@ -37,7 +37,7 @@ nav ul li {
 nav ul li a {
   font-family: 'Roboto', sans-serif;
   text-decoration: none;
-  color: white;;
+  color: black;
   font-size: 80%;
   font-weight: 400;
   padding: 4px 8px;
