@@ -19,7 +19,6 @@ function saveInput() {
   }
 }
 
-
 ///////
 //Modal Script
 ///////

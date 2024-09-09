@@ -1,15 +1,16 @@
- v
-input:-webkit-autofill,
-input:-webkit-autofill:hover,
-input:-webkit-autofill:focus,
-input:-webkit-autofill:active {
+/* Targeting only the specific input field */
+#input-field:-webkit-autofill,
+#input-field:-webkit-autofill:hover,
+#input-field:-webkit-autofill:focus,
+#input-field:-webkit-autofill:active {
     -webkit-box-shadow: 0 0 0 30px #0f0f0f inset !important;
-    -webkit-text-fill-color: #ffffff !important;
+    -webkit-text-fill-color: white !important;
 }
 
 /* Add your custom CSS styles here */
 body {
-  background-image: linear-gradient(rgb(142, 0, 0), black 25%);
+  background-image: linear-gradient(#195ba1, #1f2027 25%);
+  background: #1f2027;
   min-height: 100vh;
   width: auto;
   margin: 0;
@@ -52,7 +53,7 @@ body {
   align-items: center;
   width: 125px;
   height: 50px;
-  background: linear-gradient(to bottom, #a70000 50%, #610000 50%);
+  background: linear-gradient(to bottom, #1f27fc 50%, #4D54FF 50%);
   border-radius: 10px;
   color: #ffffff;
   font-weight: bold;
@@ -85,9 +86,9 @@ body {
 .news-container {
   min-height: 40px;
   max-height: 15%;
-  min-width: 450px;
+  min-width: 440px;
   border-radius: 1rem;
-  background-color: #1A1A1A;
+  background-color: #31333A;
   padding: 0px 30px 20px 30px;
   margin: 0 0 10px 0;
   font-family: 'Google Sans', sans-serif;
@@ -102,8 +103,8 @@ body {
   padding-top: 5px;
   padding-left: 15px;
   font-weight: 900;
-  font-size: 0.8rem;
-  color: white;
+  font-size: 1rem;
+  color: #eeeeee;
 }
 
 .news {
@@ -120,10 +121,6 @@ body {
   text-decoration: none;
 }
 
-a:hover {
-  color: red;
-}
-
 #info {
   color: white;
 }
@@ -135,7 +132,7 @@ a:hover {
 }
 
 .see-more button {
-  background-color: #FF0000;
+  background-color: #4D54FF;
   border: none;
   border-radius: 20px;
   color: white;
@@ -143,6 +140,11 @@ a:hover {
   font-size: 13px;
   padding: 5px 20px;
   margin-bottom: 1.3em;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.see-more button:hover {
+  background-color: #9195FB; /* Change to hover color */
 }
 
 .search-container {
@@ -162,7 +164,7 @@ a:hover {
 .inner-search {
   background-color: #0F0F0F;
   border-radius: 2rem;
-  border: 2px solid #FF0000;  /* Added red border */
+  border: 2px solid #4D54FF;  /* Added red border */
   display: flex;
   align-items: center;
   padding: 5px;
@@ -193,13 +195,18 @@ input[type=text] {
 }
 
 .inner-search button {
-  background-color: #FF0000;
+  background-color: #4D54FF;
   border: none;
   border-radius: 20px;
   color: white;
   cursor: pointer;
   padding: 2px 20px;
   font-weight: 500;
+  transition: background-color 0.3s ease, transform 0.3s ease; /* Smooth transition */
+}
+
+.inner-search button:hover {
+  background-color: #9195FB; /* Change to hover color */
 }
 
 .output {

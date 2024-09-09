@@ -4,7 +4,7 @@
     z-index: 1000; 
     left: 100%; 
     top: 0;
-    width: 40%;
+    width: 50%;
     overflow: hidden; 
     transition: left 0.3s ease;
     margin-top: 10em;
@@ -12,7 +12,7 @@
 
 .modal.show {
     display: block; 
-    left: 65%; /* Change this to control how far the modal slides in */
+    left: 58%; /* Change this to control how far the modal slides in */
 }
 
 .modal-content {

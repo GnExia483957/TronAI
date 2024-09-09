@@ -29,33 +29,35 @@ function sendMessage() {
     // Disable the send button
     sendButton.disabled = true;
 
+    // Create a placeholder message for the bot
+    const messageDiv = document.createElement('div');
+    messageDiv.classList.add('message', 'bot');
+
+    const title = document.createElement('div');
+    title.classList.add('title');
+    title.textContent = 'Assistant';
+
+    const messageBox = document.createElement('div');
+    messageBox.classList.add('message-box');
+
+    const timestamp = document.createElement('div');
+    timestamp.classList.add('timestamp');
+
+    messageDiv.appendChild(title);
+    messageDiv.appendChild(messageBox);
+    messageDiv.appendChild(timestamp);
+    chatContainer.appendChild(messageDiv);
+    
+    // Show thinking animation inside the message box
+    showThinkingAnimation(messageBox);
+    chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
+
     if (messageText === '') {
-        typeOutMessage('Please enter a message so I can properly assist you.', 'bot');
+        hideThinkingAnimation(); // Hide thinking animation
+        typeOutMessage('Please enter a message so I can properly assist you.', 'bot', messageBox);
         sendButton.disabled = false; // Re-enable button
     } else {
         let query = messageText;
-        // Create a placeholder message for the bot
-        const messageDiv = document.createElement('div');
-        messageDiv.classList.add('message', 'bot');
-
-        const title = document.createElement('div');
-        title.classList.add('title');
-        title.textContent = 'Assistant';
-
-        const messageBox = document.createElement('div');
-        messageBox.classList.add('message-box');
-
-        const timestamp = document.createElement('div');
-        timestamp.classList.add('timestamp');
-
-        messageDiv.appendChild(title);
-        messageDiv.appendChild(messageBox);
-        messageDiv.appendChild(timestamp);
-        chatContainer.appendChild(messageDiv);
-        
-        // Show thinking animation inside the message box
-        showThinkingAnimation(messageBox);
-        chatContainer.scrollTop = chatContainer.scrollHeight; // Scroll to the bottom
 
         // Fetch the response
         fetch('https://0a4b-182-239-89-23.ngrok-free.app/v1/g_chat', {
@@ -65,7 +67,6 @@ function sendMessage() {
                 'Content-Type': 'application/json'
             },
             body: JSON.stringify({ query: query }),
-            //do not delete credentials, helps create the session_ID needed later
             credentials: 'include'
         })
         .then(response => {
@@ -88,6 +89,7 @@ function sendMessage() {
         });
     }
 }
+
 
 function typeOutMessage(text, sender, messageBox) {
     let index = 0;
